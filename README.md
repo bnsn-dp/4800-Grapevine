@@ -20,6 +20,10 @@ We here at Pearly Gates LLC are committed to delivering high-quality software as
 4. Comment
 5. Reposts
 6. Up/Down-voting
+7. **Technologies**
+   1. React
+   2. Django
+   3. MySQL 
 
 ## Nonfunctional Requirements
 "Instagram with a dash of reddit"
