@@ -16,18 +16,13 @@ We here at Pearly Gates LLC are committed to delivering high-quality software as
 ## Functional Requirements
 1. Following people
 2. Joining communities
-3. Online Users Lists
+3. Online Following List
 4. Comment
 5. Reposts
 6. Up/Down-voting
 7. DMs
-8. **Technologies**
-   1. React
-   2. Django
-   3. MySQL 
 
 ## Nonfunctional Requirements
-"Instagram with a dash of reddit"
 1. View for following
 2. View for communities
 
