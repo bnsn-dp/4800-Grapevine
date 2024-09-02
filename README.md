@@ -12,6 +12,9 @@ We here at Pearly Gates LLC are committed to delivering high-quality software as
   - Python, Javascript
 - Damian Varela
   - React
+- Mayela Ancheta
+  - React.js
+  - JavaScript
 
 # Requirements
 
