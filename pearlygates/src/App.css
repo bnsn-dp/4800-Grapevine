@@ -1,25 +1,30 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 18em;
+  width: auto;
+  padding: 1.5rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
   will-change: filter;
   transition: filter 300ms;
+  max-width: 100%;
 }
-.logo:hover {
+/*.logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
-}
+}*/
 
 @keyframes logo-spin {
   from {

@@ -6,9 +6,9 @@ function Home() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-            <h1>Pearly Gates LLC</h1>
-            <div style={{ padding: '10px', margin: '10px' }}>
-            HOME PAGE
+
+            <div style={{ padding: '0px', margin: '0px' }}>
+           
             </div>
             <div>
                 <button onClick={() => {navigate("/projects");}}>Our Projects</button>
