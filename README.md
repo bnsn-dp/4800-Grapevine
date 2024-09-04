@@ -11,7 +11,8 @@ We here at Pearly Gates LLC are committed to delivering high-quality software as
 - Benson Diep (CEO)
   - Python, Javascript
 - Damian Varela
-  - React
+  - React.js
+  - JavaScript
 - Mayela Ancheta
   - React.js
   - JavaScript
