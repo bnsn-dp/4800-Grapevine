@@ -21,7 +21,9 @@ We here at Pearly Gates LLC are committed to delivering high-quality software as
   - Python
   - Django
   - MySQL
-
+- Ryan Larson
+  - Python
+  - MySQL
 # Requirements
 
 ## Functional Requirements
