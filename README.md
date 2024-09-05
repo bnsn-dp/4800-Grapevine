@@ -16,6 +16,10 @@ We here at Pearly Gates LLC are committed to delivering high-quality software as
 - Mayela Ancheta
   - React.js
   - JavaScript
+- Nickolas Duong
+  - Python
+  - Django
+  - MySQL
 
 # Requirements
 
