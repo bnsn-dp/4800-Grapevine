@@ -10,14 +10,21 @@
 }
 
 .logo {
-  height: 16em;
+  height: 9em;
   width: auto;
   padding: 1.5rem;
   padding-bottom: 0;
+  padding-left: 0;
   margin-bottom: 0;
   will-change: filter;
   transition: filter 300ms;
   max-width: 100%;
+  margin-right: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center; /* Align items vertically center */
 }
 /*.logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
