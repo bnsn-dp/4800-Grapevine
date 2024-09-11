@@ -19,13 +19,20 @@
   will-change: filter;
   transition: filter 300ms;
   max-width: 100%;
-  margin-right: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
 }
 
 .header {
   display: flex;
-  align-items: center; /* Align items vertically center */
-}
+  justify-content: space-between;
+  align-items: center;
+  width: 99%;
+  padding: 0px;}
+
 /*.logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
