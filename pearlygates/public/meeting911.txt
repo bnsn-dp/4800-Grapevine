@@ -1,0 +1,4 @@
+﻿What I Did Today: Reverted changes to website header, added a new page for logs to be stored, added a new about me text, created the react app for grapevine, as well as redesigning some of the text and colors
+
+
+What I Plan for Tomorrow: Continue working on company website to remove so much white space, and then start coding the home page for grapevine.
