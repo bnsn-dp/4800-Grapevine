@@ -6,16 +6,14 @@ function Home() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-
-            <div style={{ padding: '0px', margin: '0px' }}>
-           
-            </div>
             <div>
                 <button onClick={() => {navigate("/projects");}}>Our Projects</button>
                 &nbsp;&nbsp;&nbsp;
                 <button onClick={() => {navigate("/test");}}>Test Database</button>
                 &nbsp;&nbsp;&nbsp;
                 <button onClick={() => {navigate("/about");}}>About Us</button>
+                &nbsp;&nbsp;&nbsp;
+                <button onClick={() => {navigate("/logs");}}>Meeting Logs</button>
             </div>
         </div>
     )

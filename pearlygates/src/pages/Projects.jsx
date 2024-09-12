@@ -7,8 +7,9 @@ function Projects() {
     
     return (
         <>
-        <div>
-        <h1>Our Current Projects</h1>
+        <div style={{ color: "black", fontSize: "14px" }}>
+        <h1 style={{ color: "gold" }}>Our Current Projects</h1>
+        <button onClick={() => {navigate("/");}}>Grapevine</button> < br/>
             <button onClick={() => {navigate("/");}}>Return Home</button>
         </div>
         </>
