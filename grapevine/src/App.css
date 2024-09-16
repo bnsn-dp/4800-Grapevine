@@ -22,17 +22,30 @@
 .App-content {
   display: flex;
   flex: 1;
+  background-color: #f8f8f8;
 }
 
 .App-sidebar {
-  width: 200px;
+  width: 225px;
   background-color: #e0e0e0;
-  padding: 1rem;
+  padding: 0rem 0rem 0rem 1.5rem;
+  border-radius: 20px;
+  margin: 1rem;
+
+}
+
+.Sidebar-title {
+  font-size: 2rem;
+  font-family: 'VinesDay', Arial, sans-serif;
+  margin-left: 38px;
+
 }
 
 .App-sidebar nav ul {
   list-style: none;
   padding: 0;
+  font-weight: bold;
+
 }
 
 .App-sidebar nav ul li {
@@ -50,6 +63,18 @@
   background-color:#f8f8f8;
 }
 
+/*Search bar styling*/
+.search-container{
+  margin-bottom:1rem;
+}
+
+.search-input{
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
 
 
 @font-face {
