@@ -26,11 +26,22 @@ function App() {
 
               <h2 className="Sidebar-title">The Winery</h2>
 
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Messages</a></li>
-              <li><a href="#">Communities</a></li>
-              <li><a href="#">Settings</a></li>
-
+              <li><a href="#">
+                <img src="Home.png" alt="Home Icon" class="nav-icons"></img>
+                Home
+                </a></li>
+              <li><a href="#">
+                <img src="Chat.png" alt="Chat Icon" class="nav-icons"></img>
+                Messages
+                </a></li>
+              <li><a href="#">
+                <img src="Communities.png" alt="Community Icon" class="nav-icons"></img>
+                Communities
+                </a></li>
+              <li><a href="#">
+                <img src="Settings.png" alt="Setting Icon" class="nav-icons"></img>
+                Settings
+                </a></li>
             </ul>
           </nav>
         </aside>
