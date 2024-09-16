@@ -15,6 +15,8 @@
 .App-title {
   margin: 0;
   font-size: 5rem;
+  font-family: 'VinesDay', Arial, sans-serif;
+  color: #105624;
 }
 
 .App-content {
@@ -46,4 +48,13 @@
   flex: 1;
   padding: 1rem;
   background-color:#f8f8f8;
+}
+
+
+
+@font-face {
+  font-family: 'VinesDay'; /* Name to use in your CSS */
+  src: url('/public/fonts/FleurDeLeah.ttf') format('truetype'); /* Path to your font file */
+  font-weight: normal;
+  font-style: normal;
 }
