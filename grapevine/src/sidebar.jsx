@@ -1,25 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Home() {
-
-    const navigate = useNavigate()
-  // Adding Search Bar Component
-  const[searchTerm, setSearchTerm] = useState('');
-
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  }
+function getSidebar() {
+  const navigate = useNavigate();
 
   return (
-    <div className="App">
-
-      <header className="App-header">
-        <h1 className="App-title">Grapevine</h1>
-      </header>
-
-      <div className="App-content">
-      <aside className="App-sidebar">
+    <aside className="App-sidebar">
       <nav>
         <ul>
           <h2 className="Sidebar-title">The Winery</h2>
@@ -51,21 +37,7 @@ function Home() {
         </ul>
       </nav>
     </aside>
-        <main className="App-main">
-          <div className="search-container">
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="search-input"
-            />
-          </div>
-          <p>Welcome to Grapevine!</p>
-        </main>
-      </div>
-    </div>
   );
 }
 
-export default Home;
+export default getSidebar;

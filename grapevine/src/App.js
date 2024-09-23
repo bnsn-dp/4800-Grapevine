@@ -1,8 +1,8 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Messages from "./pages/Messages";
-import Profile from "./pages/Profile";
+import Home from "./Pages/Home";
+import Messages from "./Pages/Messages";
+import Profile from "./Pages/Profile";
 
 function App() {
   return (
