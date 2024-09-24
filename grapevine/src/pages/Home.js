@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function Home() {
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
   // Adding Search Bar Component
   const[searchTerm, setSearchTerm] = useState('');
 
@@ -25,7 +25,7 @@ function Home() {
           <h2 className="Sidebar-title">The Winery</h2>
 
           <li>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate("/"); }}>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate("/home"); }}>
               <img src="/icons/Home.png" alt="Home Icon" className="nav-icons" />
               Home
             </a>
@@ -43,14 +43,14 @@ function Home() {
             </a>
           </li>
           <li>
-          <a href="#" onClick={(e) => { e.preventDefault(); navigate("/welcome"); }}>
+          <a href="#" onClick={(e) => { e.preventDefault(); navigate("/"); }}>
               <img src="/icons/Settings.png" alt="Setting Icon" className="nav-icons" />
               Settings
             </a>
           </li>
         </ul>
       </nav>
-    </aside>
+      </aside>
         <main className="App-main">
           <div className="search-container">
             <input

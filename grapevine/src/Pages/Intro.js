@@ -27,7 +27,7 @@ const IntroPage = () => {
       justifyContent: 'center', height: '100vh', backgroundColor: '#f5f5f5', textAlign: 'center'
     }}>
       <header className="App-header">
-        <h1 className="App-title"> Grapevine!</h1>
+        <h1 className="App-title">Grapevine!</h1>
       </header>
 
       {!showLogin && !showSignUp ? (
@@ -51,7 +51,7 @@ const IntroPage = () => {
           <button style={{
             padding: '10px 20px', margin: '0 10px', backgroundColor: '#105624',
             color: '#FAF9F6', border: '1px', borderRadius: '5px', cursor: 'pointer', fontSize: '16px'
-          }} onClick={(e) => { e.preventDefault(); navigate("/"); }}>Confirm</button>
+          }} onClick={(e) => { e.preventDefault(); navigate("/home"); }}>Confirm</button>
 
           <button style={{
             padding: '10px 20px', margin: '0 10px', backgroundColor: '#105624',
@@ -72,7 +72,7 @@ const IntroPage = () => {
           <button style={{
             padding: '10px 20px', margin: '0 10px', backgroundColor: '#105624',
             color: '#FAF9F6', border: '1px', borderRadius: '5px', cursor: 'pointer', fontSize: '16px'
-          }} onClick={(e) => { e.preventDefault(); navigate("/"); }}>Confirm</button>
+          }} onClick={(e) => { e.preventDefault(); navigate("/home"); }}>Confirm</button>
 
           <button style={{
             padding: '10px 20px', margin: '0 10px', backgroundColor: '#105624',

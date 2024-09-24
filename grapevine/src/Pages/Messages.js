@@ -11,7 +11,7 @@ function Messages() {
         <h1 style={{ color: "gold" }}> Messages</h1>
         </div>
         <div>
-            <button onClick={() => {navigate("/");}}>Return Home</button>
+            <button onClick={() => {navigate("/home");}}>Return Home</button>
         </div>
         </>
     )

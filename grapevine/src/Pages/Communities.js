@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Profile() {
+function Communities() {
 
     const navigate = useNavigate()
 
@@ -9,10 +9,10 @@ function Profile() {
         <>
         <div>
         <h1 style={{ color: "gold" }}>Communities</h1>
-            <button onClick={() => {navigate("/");}}>Return Home</button>
+            <button onClick={() => {navigate("/home");}}>Return Home</button>
         </div>
         </>
     )
 }
 
-export default Profile
+export default Communities
