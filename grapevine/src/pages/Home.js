@@ -43,7 +43,7 @@ function Home() {
             </a>
           </li>
           <li>
-            <a href="#">
+          <a href="#" onClick={(e) => { e.preventDefault(); navigate("/welcome"); }}>
               <img src="/icons/Settings.png" alt="Setting Icon" className="nav-icons" />
               Settings
             </a>

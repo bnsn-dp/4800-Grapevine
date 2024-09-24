@@ -8,14 +8,8 @@ function Profile() {
     return (
         <>
         <div>
-        <h1 style={{ color: "gold" }}>Pearly Gates LLC Test Server</h1>
+        <h1 style={{ color: "gold" }}>Communities</h1>
             <button onClick={() => {navigate("/");}}>Return Home</button>
-        </div>
-        <div>
-            ------
-        </div>
-        <div>
-            <button>Click to Display Data</button>
         </div>
         </>
     )
