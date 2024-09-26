@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import Messages from "./Pages/Messages";
 import Communities from "./Pages/Communities";
 import Intro from "./Pages/Intro";
+import Profile from "./Pages/Profile"
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Intro />} />
-            <Route path="/profile" element={<Communities />} />
+            <Route path="/communities" element={<Communities />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </Router>
       </div>
