@@ -50,13 +50,12 @@ function Home() {
           </li>
         </ul>
       </nav>
-
-      <div className="user-info">
-      <img src="/SmiskiPFP.png" alt="Profile Picture" className="profile-pic"/>
+      
+      <a href="#" onClick={(e) => { e.preventDefault(); navigate("/profile"); }} className="user-info">
+        <img src="/SmiskiPFP.png" alt="Profile Picture" className="profile-pic"/>
         <p className="user-name">Mayela</p>
-        
-        <p className="username">@mayela101</p>
-      </div>
+          <p className="username">@mayela101</p>
+      </a>
 
       </aside>
         <main className="App-main">
