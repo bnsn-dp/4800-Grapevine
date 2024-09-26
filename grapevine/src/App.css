@@ -82,7 +82,28 @@
   border-radius: 4px;
   font-size: 1rem;
 }
+.user-info{
+  margin-top: 11rem;
+  margin-right: 1.5rem;
+  padding: 1rem;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  text-align: center;
+}
+.profile-pic{
+  border-radius: 50%;
+  margin-bottom:0rem;
+}
+.user-name{
+  font-size:1.3rem;
+  font-weight:bold;
+  color: #105624;
+  margin-bottom:0.2rem;
+}
+.username{
 
+  margin-top:0.5rem;
+}
 @font-face {
   font-family: 'VinesDay'; /* Name to use in your CSS */
   src: url('/public/fonts/FleurDeLeah.ttf') format('truetype'); /* Path to your font file */
