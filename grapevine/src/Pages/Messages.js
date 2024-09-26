@@ -7,11 +7,11 @@ function Messages() {
 
     return (
         <>
-        <div style={{ color: "black", fontSize: "20px" }}>
-        <h1 style={{ color: "gold" }}> Messages</h1>
+        <div className="App-title">
+        <p style={{ color: "gold" }}> Messages</p>
         </div>
         <div>
-            <button onClick={() => {navigate("/home");}}>Return Home</button>
+            <button className="Intro-buttons" onClick={() => {navigate("/home");}}>Return Home</button>
         </div>
         </>
     )
