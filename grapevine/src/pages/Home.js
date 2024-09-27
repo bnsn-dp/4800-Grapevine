@@ -37,7 +37,7 @@ function Home() {
             </a>
           </li>
           <li>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate("/profile"); }}>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate("/Communities"); }}>
               <img src="/icons/Communities.png" alt="Community Icon" className="nav-icons" />
               Communities
             </a>
