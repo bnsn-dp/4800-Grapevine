@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d37c617a.css",
+    "main.js": "/static/js/main.cc7a3ba4.js",
+    "static/js/453.3f53ff7d.chunk.js": "/static/js/453.3f53ff7d.chunk.js",
+    "static/media/FleurDeLeah.ttf": "/static/media/FleurDeLeah.e0b1b4d77fb430a2bc75.ttf",
+    "index.html": "/index.html",
+    "main.d37c617a.css.map": "/static/css/main.d37c617a.css.map",
+    "main.cc7a3ba4.js.map": "/static/js/main.cc7a3ba4.js.map",
+    "453.3f53ff7d.chunk.js.map": "/static/js/453.3f53ff7d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d37c617a.css",
+    "static/js/main.cc7a3ba4.js"
+  ]
+}

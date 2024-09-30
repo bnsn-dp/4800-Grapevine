@@ -1,0 +1,55 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker images
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/grapevine-backend:latest .
+        docker push ${{ secrets.DOCKER_USERNAME }}/grapevine-backend:latest
+
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.AWS_EC2_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.AWS_EC2_IP }} >> ~/.ssh/known_hosts
+
+    # - name: Copy docker-compose.yml to EC2
+    #   run: |
+    #     scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa docker-compose.yml ubuntu@${{ secrets.AWS_EC2_IP }}:/home/ubuntu/docker-compose.yml
+
+    # - name: Copy Dockerfile to EC2
+    #   run: |
+    #     scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa Dockerfile ubuntu@${{ secrets.AWS_EC2_IP }}:/home/ubuntu/Dockerfile
+
+
+
+    - name: Deploy to EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.AWS_EC2_IP }} << 'EOF'
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} ${{ secrets.DOCKER_USERNAME }}
+          docker pull  ${{ secrets.DOCKER_USERNAME }}/grapevine-backend:latest
+          docker stop grapevine-backend || true
+          docker rm grapevine-backend || true
+          docker run -d --name grapevine-backend -p 80:8000 ${{ secrets.DOCKER_USERNAME }}/grapevine-backend:latest
+        EOF
