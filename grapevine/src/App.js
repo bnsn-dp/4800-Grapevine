@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Messages from "./Pages/Messages";
 import Communities from "./Pages/Communities";
-import Intro from "./Pages/Intro";
 import Profile from "./Pages/Profile"
+import IntroPage from './IntroPage';
+import LoginPage from './LoginPage';
+import SignUpPage from './SignUpPage';
 
 function App() {
   return (
@@ -12,11 +14,13 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
-            <Route path="/" element={<Intro />} />
+            <Route path="/intro" element={<IntroPage />} />
             <Route path="/communities" element={<Communities />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
           </Routes>
         </Router>
       </div>
