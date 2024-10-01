@@ -55,7 +55,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://grapevinesite.s3-website-us-west-1.amazonaws.com/'
 ]
 
 ROOT_URLCONF = 'grapevine.urls'
