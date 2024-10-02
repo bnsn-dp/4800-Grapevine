@@ -1,0 +1,217 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: beige;
+  font-family: Arial, sans-serif;
+}
+
+.App-header {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8f8f8;
+}
+
+.App-title {
+  margin: 0;
+  font-size: 5rem;
+  font-family: 'VinesDay', Arial, sans-serif;
+  color: #105624;
+}
+
+.App-content {
+  display: flex;
+  flex: 1;
+  background-color: #f8f8f8;
+}
+
+.App-sidebar {
+  width: 225px;
+  background-color: #e0e0e0;
+  padding: 0rem 0rem 0rem 1.5rem;
+  border-radius: 20px;
+  margin: 1rem;
+
+}
+
+.Sidebar-title {
+  font-size: 2rem;
+  font-family: 'VinesDay', Arial, sans-serif;
+  margin-left: 38px;
+}
+
+.App-sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  font-weight: bold;
+}
+
+.App-sidebar nav ul li {
+  margin: 3rem 0;
+}
+
+.App-sidebar nav ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #030303;
+}
+
+.App-main {
+  flex: 1;
+  padding: 1rem;
+  background-color:#f8f8f8;
+}
+
+.nav-icons {
+  width: 30px;
+  height: auto;
+  margin-right: 20px;
+  color: #f8f8f8;
+}
+
+.search-container{
+  margin-bottom:1rem;
+  padding-right: 1rem;
+}
+
+.search-input{
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.user-info{
+  margin-top: 11rem;
+  margin-right: 1.5rem;
+  padding: 1rem;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;;
+  color:inherit;
+  display: block;
+}
+
+.profile-pic{
+  border-radius: 50%;
+  margin-bottom:0rem;
+}
+.user-name{
+  font-size:1.3rem;
+  font-weight:bold;
+  color: #105624;
+  margin-bottom:0.2rem;
+}
+
+.username{
+  margin-top:0.5rem;
+  color:black;
+  text-decoration:none !important;
+  cursor: pointer;
+}
+
+.Intro-content{
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  height: 100vh ;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.Intro-cushion{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.Intro-buttons{
+  padding: 10px 20px;
+  margin: 0 10px; 
+  background-color: #105624;
+  color: #FAF9F6; 
+  border: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Profile-buttons{
+  background-color: #105624;
+  color: #FAF9F6;
+  height: 3rem;
+  width: 10rem;
+}
+
+.ProfilePage-pic{
+  height:8rem;
+  width: auto;
+  border-radius: 50%;
+  padding: 10px;                        
+}
+
+
+.ProfilePage-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+
+}
+
+.ProfilePage-text h1, .ProfilePage-text h2 {
+  margin: 0;
+  padding: 3%;
+}
+
+.Profile-buttons {
+  display: block;
+  margin-top: 20px;
+  border-radius:5px;
+
+}
+
+.Profile-content{
+  display: block;
+  margin-bottom:10px;
+}
+
+.Bio-buttons{
+  background-color: #105624;
+  color: #FAF9F6;
+  height: 2rem;
+  width: 5rem;
+  border-radius:5px;
+  border:0px;
+}
+
+.Profile-bio{
+  margin-left: 150px;
+}
+
+.Bio-content{
+  background-color: #e0e0e0;
+  padding:12px;
+  border-radius:10px;
+}
+
+.Bio-buttons {
+  margin-top: 10px;
+}
+
+
+
+@font-face {
+  font-family: 'VinesDay'; /* Name to use in your CSS */
+  src: url('/public/fonts/FleurDeLeah.ttf') format('truetype'); /* Path to your font file */
+  font-weight: normal;
+  font-style: normal;
+}
