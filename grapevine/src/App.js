@@ -4,9 +4,9 @@ import Home from "./Pages/Home";
 import Messages from "./Pages/Messages";
 import Communities from "./Pages/Communities";
 import Profile from "./Pages/Profile"
-import IntroPage from './IntroPage';
-import LoginPage from './LoginPage';
-import SignUpPage from './SignUpPage';
+import IntroPage from './Pages/Intro';
+import LoginPage from './Pages/LoginPage';
+import SignUpPage from './Pages/SignUpPage';
 
 function App() {
   return (
