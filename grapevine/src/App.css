@@ -27,7 +27,7 @@
 
 .App-sidebar {
   width: 225px;
-  background-color: #D1FFBD;
+  background-color: #e0e0e0;
   padding: 0rem 0rem 0rem 1.5rem;
   border-radius: 20px;
   margin: 1rem;
@@ -143,6 +143,68 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.Profile-buttons{
+  background-color: #105624;
+  color: #FAF9F6;
+  height: 3rem;
+  width: 10rem;
+}
+
+.ProfilePage-pic{
+  height:8rem;
+  width: auto;
+  border-radius: 50%;
+  padding: 10px;                        
+}
+
+
+.ProfilePage-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+
+}
+
+.ProfilePage-text h1, .ProfilePage-text h2 {
+  margin: 0;
+  padding: 3%;
+}
+
+.Profile-buttons {
+  display: block;
+  margin-top: 20px;
+  border-radius:5px;
+
+}
+
+.Profile-content{
+  display: block;
+  margin-bottom:10px;
+}
+
+.Bio-buttons{
+  background-color: #105624;
+  color: #FAF9F6;
+  height: 2rem;
+  width: 5rem;
+  border-radius:5px;
+  border:0px;
+}
+
+.Profile-bio{
+  margin-left: 150px;
+}
+
+.Bio-content{
+  background-color: #e0e0e0;
+  padding:12px;
+  border-radius:10px;
+}
+
+.Bio-buttons {
+  margin-top: 10px;
 }
 
 
