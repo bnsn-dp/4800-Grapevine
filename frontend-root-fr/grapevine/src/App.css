@@ -112,6 +112,63 @@
   cursor: pointer;
 }
 
+.create-post-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #026806;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;        
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+
+.post-container {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.post-textbox {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.confirm-button {
+  width: 100%;
+  padding: 5px;
+  background-color: #025415;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.App-posts {
+  padding: 10px;
+}
+
+.post {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+}
+
+
 .Intro-content{
   display: flex; 
   flex-direction: column;
