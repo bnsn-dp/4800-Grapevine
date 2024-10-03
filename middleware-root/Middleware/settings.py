@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-fv#w1yhxwsqpzxasdaaq#ut*%*gqo)&$b!6db-)lu_7wi8x&#q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*',  'Grapevine-env.eba-8afbetm7.us-west-1.elasticbeanstalk.com']
 
 
 # Application definition
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Middleware.wsgi.application'
+WSGI_APPLICATION = 'middleware.wsgi.application'
 
 
 # Database
