@@ -5,3 +5,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
         fields = ('id', 'username', 'userpassword', 'status', 'email', 'firstname', 'lastname')
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Posts
+        fields = ('postid', 'postdescription', 'imagelink', 'status')

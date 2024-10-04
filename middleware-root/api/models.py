@@ -76,7 +76,7 @@ class Posts(models.Model):
     postid = models.CharField(db_column='PostID', primary_key=True, max_length=16)  # Field name made lowercase.
     postdescription = models.CharField(db_column='PostDescription', max_length=250, blank=True, null=True)  # Field name made lowercase.
     imagelink = models.CharField(db_column='ImageLink', max_length=250)  # Field name made lowercase.
-    posttime = models.DateTimeField(db_column='PostTime')  # Field name made lowercase.
+    posttime = models.DateTimeField(db_column='PostTime', auto_now_add=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
