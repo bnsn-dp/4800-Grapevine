@@ -1,10 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from rest_framework import viewsets, permissions
 from .models import *
 from .serializers import *
 from rest_framework.response import Response
+from django.db import connection
 # Create your views here.
+
+def getUserID(request):
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT COUNT(*) FROM Users')
+        row = cursor.fetchone()
+        rowCount = row[0] + 1
+        formatted_string = f"U{str(rowCount).zfill(15)}"
+    return JsonResponse({'genString': formatted_string})
 
 def home(request):
     return HttpResponse("This is the homepage")
