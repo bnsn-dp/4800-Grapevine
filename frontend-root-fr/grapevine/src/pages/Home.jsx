@@ -104,14 +104,14 @@ function Home() {
           )}
         </main>
 
-        <aside className="App-posts">
+        <div className="App-posts">
           <h2>Posts</h2>
           {posts.map((post, index) => (
             <div key={index} className="post">
               <p>{post}</p>
             </div>
           ))}
-        </aside>
+        </div>
       </div>
     </div>
   );

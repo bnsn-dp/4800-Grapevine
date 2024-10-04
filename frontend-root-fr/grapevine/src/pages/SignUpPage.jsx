@@ -45,7 +45,7 @@ const SignUpPage = () => {
         <MyTextField label="Username" name="username" control={control} placeholder="Username" />
         <MyTextField label="Email" name="email" control={control} placeholder="Email Address" />
         <MyTextField label="Password" name="userpassword" control={control} placeholder="Enter User Password" />
-        <button className="Intro-buttons" type="submit">Sign Up</button>
+        <button onClick={() => {navigate("/login");}} className="Intro-buttons" type="submit">Sign Up</button>
       </div>
     </form>
   );
