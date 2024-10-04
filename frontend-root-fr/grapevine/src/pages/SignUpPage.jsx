@@ -29,7 +29,7 @@ const SignUpPage = () => {
       lastname: data.lastname,
     })
     .then(() => {
-      navigate("/home");
+      navigate("/");
     })
     .catch((error) => {
       console.error('Sign up failed', error);
@@ -45,7 +45,7 @@ const SignUpPage = () => {
         <MyTextField label="Username" name="username" control={control} placeholder="Username" />
         <MyTextField label="Email" name="email" control={control} placeholder="Email Address" />
         <MyTextField label="Password" name="userpassword" control={control} placeholder="Enter User Password" />
-        <button onClick={() => {navigate("/");}} className="Intro-buttons" type="submit">Sign Up</button>
+        <button className="Intro-buttons" type="submit">Sign Up</button>
       </div>
     </form>
   );

@@ -27,7 +27,7 @@ const LoginPage = () => {
       <div className='container'>
         <MyTextField label="Username" name="username" control={control} placeholder="Username" />
         <MyTextField label="Password" name="userpassword" control={control} placeholder="Password" />
-        <button onClick={() => {navigate("/home");}} className="Intro-buttons" type="submit">Log In</button>
+        <button className="Intro-buttons" type="submit">Log In</button>
       </div>
     </form>
   );
