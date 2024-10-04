@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*',  'Grapevine-env.eba-8afbetm7.us-west-1.elasticbeanstalk.com', 'newgv-env.eba-8afbetm7.us-west-1.elasticbeanstalk.com']
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
 
 # Application definition
 
