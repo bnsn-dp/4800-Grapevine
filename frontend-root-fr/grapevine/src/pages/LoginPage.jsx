@@ -48,8 +48,8 @@ const LoginPage = () => {
   return (
     <form onSubmit={handleSubmit(submission)}>
       <div className='container'>
-        <MyTextField label="Username" name="username" control={control} placeholder="Username" />
-        <MyTextField label="Password" name="userpassword" control={control} placeholder="Password" />
+        <MyTextField label="Username" name="username" control={control} placeholder="Username" type="text"/>
+        <MyTextField label="Password" name="userpassword" control={control} placeholder="Password" type="password"/>
         <button className="Intro-buttons" type="submit">Log In</button>
         {error && <div style={{ color: 'red' }}>{error}</div>} {/* Display error message */}
       </div>
