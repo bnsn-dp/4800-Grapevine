@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-
   const navigate = useNavigate();
+
   // Adding Search Bar Component
   const [searchTerm, setSearchTerm] = useState('');
   const [postText, setPostText] = useState('');
   const [posts, setPosts] = useState([]);
   const [showPostBox, setShowPostBox] = useState(false);
+
+  // State to hold user data
+  const [user, setUser] = useState({ first_name: '', last_name: '', username: '' });
+
+  useEffect(() => {
+    // Retrieve the user data from localStorage
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    // If user data exists in localStorage, set it to state
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -71,8 +84,10 @@ function Home() {
           </nav>
           <a href="#" onClick={(e) => { e.preventDefault(); navigate("/profile"); }} className="user-info">
             <img src="/SmiskiPFP.png" alt="Profile Picture" className="profile-pic"/>
-            <p className="user-name">Mayela</p>
-            <p className="username">@mayela101</p>
+            {/* Display user's first and last name */}
+            <p className="user-name">{`${user.first_name} ${user.last_name}`}</p>
+            {/* Display user's username */}
+            <p className="username">@{user.username}</p>
           </a>
         </aside>
 

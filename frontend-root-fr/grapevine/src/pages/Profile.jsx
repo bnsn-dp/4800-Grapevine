@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Profile() {
   const navigate = useNavigate();
 
-  const [user, setUser] = useState({
-    name: 'Mayela',
-    username: 'mayela101',
-    bio: 'DAMIAN IS THE GOAT (bc Mayela would totally say this)',
-    friends: ['Damian', 'Benson', 'Nick', 'Canaan', 'Ryan']
-  });
+  // State to hold user data
+  const [user, setUser] = useState({ first_name: '', last_name: '', username: '' });
+
+  useEffect(() => {
+    // Retrieve the user data from localStorage
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    // If user data exists in localStorage, set it to state
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
 
   const [isEditing, setIsEditing] = useState(false);
   const [newBio, setNewBio] = useState(user.bio);
@@ -62,8 +69,8 @@ function Profile() {
 
           <a href="#" onClick={(e) => { e.preventDefault(); navigate("/profile"); }} className="user-info">
             <img src="/SmiskiPFP.png" alt="Profile Picture" className="profile-pic" />
-            <p className="user-name">Mayela</p>
-            <p className="username">@mayela101</p>
+            <p className="user-name">{`${user.first_name} ${user.last_name}`}</p>
+            <p className="username">@{user.username}</p>
           </a>
         </aside>
 
@@ -71,7 +78,7 @@ function Profile() {
           <div className="ProfilePage-header">
             <img src="/SmiskiPFP.png" alt={`Mayela's profile`} className="ProfilePage-pic" />
             <div className="ProfilePage-text">
-              <h1>{user.name}</h1>
+              <h1>{`${user.first_name}`}</h1>
               <h2>@{user.username}</h2>
             </div>
           </div>
