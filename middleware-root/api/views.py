@@ -33,37 +33,35 @@ def login_user(request):
         try:
             body = json.loads(request.body)
             username = body.get('username')
-            password = body.get('password')
+            password = body.get('userpassword')
         except json.JSONDecodeError:
             return JsonResponse({'message': 'Invalid JSON'}, status=400)
 
         # Step 1: Check if user exists and is active
         try:
-            user = User.objects.get(username=username)
-            print(f"User found: {user.username}, is_active: {user.is_active}")
+            user = Users.objects.get(username=username)
+            print(f"User found: {user.username}")
 
-            if not user.is_active:
-                return JsonResponse({'message': 'Account is inactive'}, status=403)
-
-        except User.DoesNotExist:
+        except Users.DoesNotExist:
             print("User does not exist")
             return JsonResponse({'message': 'User does not exist Invalid username or password', 'status': 'error'}, status=401)
-
-        # Step 2: Check if password is correct using check_password()
-        if user.check_password(password):
-            print("Password is correct")
-            # Optionally, you can return success here if check_password works, bypassing authenticate()
-            return JsonResponse({'message': 'Login successful', 'status': 'success'})
-        else:
-            print("Password is incorrect")
-            return JsonResponse({'message': 'Password is incorrect Invalid username or password', 'status': 'error'}, status=401)
+        #
+        # # Step 2: Check if password is correct using check_password()
+        # if user.check_password(password):
+        #     print("Password is correct")
+        #     # Optionally, you can return success here if check_password works, bypassing authenticate()
+        #     return JsonResponse({'message': 'Login successful', 'status': 'success'})
+        # else:
+        #     print("Password is incorrect")
+        #     return JsonResponse({'message': 'Password is incorrect Invalid username or password', 'status': 'error'}, status=401)
 
         # Step 3: If using authenticate (this will also re-check the password)
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            return JsonResponse({'message': 'Login successful', 'status': 'success'})
-        else:
-            return JsonResponse({'message': 'Invalid username or password', 'status': 'error'}, status=401)
+        if user.username == username and user.userpassword == password:
+            if user is not None:
+                return JsonResponse({'message': 'Login successful', 'status': 'success', 'first_name': user.firstname,
+                                      'last_name': user.lastname, 'username': user.username})
+            else:
+                return JsonResponse({'message': 'Invalid username or password', 'status': 'error'}, status=401)
 
     else:
         return JsonResponse({'message': 'Invalid request method'}, status=405)
