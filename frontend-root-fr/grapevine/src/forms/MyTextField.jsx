@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import {Controller} from 'react-hook-form'
 
 export default function MyTextField(props) {
-    const {label, placeholder, name, control} = props
+    const {label, placeholder, name, control, type} = props
   return (
     <Controller
         name = {name}
@@ -21,6 +21,7 @@ export default function MyTextField(props) {
                   label={label}
                   variant="standard"
                   placeholder = {placeholder}
+                  type={type} // Set the type to 'password' or 'text'
               />
             )
         }
