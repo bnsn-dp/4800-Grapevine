@@ -75,6 +75,10 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+]
+
 WSGI_APPLICATION = 'Middleware.wsgi.application'
 
 # Database

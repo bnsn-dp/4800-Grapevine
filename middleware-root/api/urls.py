@@ -7,5 +7,6 @@ router.register('users', UserViewset, basename='users')
 router.register('posts', PostViewset, basename='posts')
 
 urlpatterns = [
-    path('api/getuserid/', getUserID, name='getuserid')
-    ] + router.urls
+    path('api/getuserid/', getUserID, name='getuserid'),
+    path('api/login/', login_user, name='login'),
+              ] + router.urls
