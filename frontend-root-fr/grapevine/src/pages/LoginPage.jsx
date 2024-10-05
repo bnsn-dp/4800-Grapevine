@@ -1,23 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import MyTextField from '../forms/MyTextField';
 import AxiosInstance from '../Axios';
 
 const LoginPage = () => {
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control, setValue} = useForm();
   const navigate = useNavigate();
-
+  const [error, setError] = useState(null); // State to hold error message
+  const defaultValues = {
+    username: '',
+    userpassword: '',
+  };
   const submission = (data) => {
+    // Clear any previous errors
+    setError(null);
 
-    AxiosInstance.post('login/', {
+    AxiosInstance.post('api/login/', {
       username: data.username,
-      password: data.userpassword,
+      userpassword: data.userpassword,
     })
-    .then(() => {
-      navigate("/home");
+    .then((response) => {
+      if (response.data.status === 'success') {
+          // Assuming the response contains user data like first name, last name, and username
+        const { first_name, last_name, username } = response.data;
+
+        // Store user information in localStorage
+        localStorage.setItem('user', JSON.stringify({
+          first_name,
+          last_name,
+          username
+        }));
+        navigate("/home");  // Redirect to home on successful login
+      }
     })
     .catch((error) => {
+      if (error.response && error.response.status === 401) {
+        // Set error message if login fails
+        setError('Username and/or password is incorrect');
+      } else {
+        setError('An error occurred during login');
+      }
       console.error('Login failed', error);
     });
   };
@@ -28,6 +51,7 @@ const LoginPage = () => {
         <MyTextField label="Username" name="username" control={control} placeholder="Username" />
         <MyTextField label="Password" name="userpassword" control={control} placeholder="Password" />
         <button className="Intro-buttons" type="submit">Log In</button>
+        {error && <div style={{ color: 'red' }}>{error}</div>} {/* Display error message */}
       </div>
     </form>
   );
