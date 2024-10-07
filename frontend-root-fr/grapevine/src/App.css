@@ -264,11 +264,56 @@
   margin-top: 10px;
 }
 
+.Messages-list {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+
+}
+
+.Messages-list-title {
+  padding-left: 5px;
+}
+.Messages-list ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.Messages-list li {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.Messages-list-container {
+  display: flex;
+  flex-direction: column;
+  width: 350px; /* Adjust width as needed */
+  margin-left: 20px;
+  list-style: none;
+}
+
+.message-item {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-item:hover {
+  background-color: #e0e0e0;
+}
 
 
 @font-face {
-  font-family: 'VinesDay'; /* Name to use in your CSS */
-  src: url('/public/fonts/FleurDeLeah.ttf') format('truetype'); /* Path to your font file */
+  font-family: 'VinesDay'; 
+  src: url('/public/fonts/FleurDeLeah.ttf') format('truetype'); 
   font-weight: normal;
   font-style: normal;
 }
