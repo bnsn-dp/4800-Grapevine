@@ -5,7 +5,7 @@ import GetSidebar from '../functions/display';
 function Profile() {
   const navigate = useNavigate();
 
-  // State to hold user data
+// State to hold user data
   const [user, setUser] = useState({ first_name: '', last_name: '', username: '' });
 
   useEffect(() => {
