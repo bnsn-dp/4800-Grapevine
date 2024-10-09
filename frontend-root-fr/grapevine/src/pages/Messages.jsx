@@ -7,11 +7,11 @@ function Messages() {
 
 
   const messages = [
-    { id: 1, sender: "John", text: "Hey, how's it going? I hope you had a great day!" },
-    { id: 2, sender: "Alice", text: "Don't forget the meeting tomorrow at 10 AM in the conference room." },
-    { id: 3, sender: "Bob", text: "Let's grab lunch at that new sushi place downtown tomorrow." },
-    { id: 4, sender: "Bob", text: "Let's grab lunch at that new sushi place downtown tomorrow." },
-    { id: 5, sender: "Bob", text: "Let's grab lunch at that new sushi place downtown tomorrow." },
+    { id: 1, sender: "Damian", text: "Mayela is the BEST teammate ever, projects are so much fun with her!" },
+    { id: 2, sender: "Ryan", text: "I despise little freshmen who run around my dorm, those kids can ROT!!!!" },
+    { id: 3, sender: "Benson", text: "I'm such a super chill CEO, don't you agree? BTW I'm signing your check tmr." },
+    { id: 4, sender: "Nick", text: "Live Laugh Love Albertsons!! " },
+    { id: 5, sender: "Canaan", text: "Hi guys, sorry I can't make it to class today :(" },
   ];
 
 

@@ -268,7 +268,7 @@
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
-  max-height: 400px;
+  height: 725px;
   overflow-y: auto;
   background-color: #e0e0e0;
   border-radius: 20px;
@@ -292,7 +292,7 @@
 .Messages-list-container {
   display: flex;
   flex-direction: column;
-  width: 350px; /* Adjust width as needed */
+  width: 350px; 
   margin-left: 20px;
   list-style: none;
 }
