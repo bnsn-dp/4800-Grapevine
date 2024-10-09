@@ -166,7 +166,7 @@ function Home() {
 
         <div className="App-posts">
           <div className="posts-header">
-            <h2>Your Posts</h2>
+            <h2 style={{ fontStyle: 'italic' }}>The Trellis</h2>
             <button className="refresh-button" onClick={refreshPosts}>Refresh</button>
           </div>
 
