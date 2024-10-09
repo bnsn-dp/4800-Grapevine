@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import GetSidebar from '../functions/display';
 
 function Home() {
   const navigate = useNavigate();
@@ -52,45 +53,7 @@ function Home() {
       </header>
 
       <div className="App-content">
-        <aside className="App-sidebar">
-          <nav>
-            <ul>
-              <h2 className="Sidebar-title">The Winery</h2>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/home"); }}>
-                  <img src="/icons/Home.png" alt="Home Icon" className="nav-icons" />
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/messages"); }}>
-                  <img src="/icons/Chat.png" alt="Chat Icon" className="nav-icons" />
-                  Messages
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/Communities"); }}>
-                  <img src="/icons/Communities.png" alt="Community Icon" className="nav-icons" />
-                  Communities
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/"); }}>
-                  <img src="/icons/Settings.png" alt="Setting Icon" className="nav-icons" />
-                  Settings
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <a href="#" onClick={(e) => { e.preventDefault(); navigate("/profile"); }} className="user-info">
-            <img src="/SmiskiPFP.png" alt="Profile Picture" className="profile-pic"/>
-            {/* Display user's first and last name */}
-            <p className="user-name">{`${user.first_name} ${user.last_name}`}</p>
-            {/* Display user's username */}
-            <p className="username">@{user.username}</p>
-          </a>
-        </aside>
-
+        <GetSidebar />
         <main className="App-main">
           <div className="search-container">
             <input
