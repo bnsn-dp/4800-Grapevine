@@ -9,4 +9,9 @@ class UserSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Posts
-        fields = ('postid', 'postdescription', 'imagelink', 'status')
+        fields = ('postid', 'postdescription', 'imagelink')
+
+class CreatedPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Createdposts
+        fields = ('userid', 'postid', 'ucpid')
