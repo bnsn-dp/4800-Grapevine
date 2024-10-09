@@ -1,4 +1,22 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+
 const GetSidebar = () => {
+
+  const navigate = useNavigate();
+  // State to hold user data
+  const [user, setUser] = useState({ first_name: '', last_name: '', username: '' });
+
+  useEffect(() => {
+    // Retrieve the user data from localStorage
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    // If user data exists in localStorage, set it to state
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
     return (
         <aside className="App-sidebar">
           <nav>
@@ -33,8 +51,8 @@ const GetSidebar = () => {
 
           <a href="#" onClick={(e) => { e.preventDefault(); navigate("/profile"); }} className="user-info">
             <img src="/SmiskiPFP.png" alt="Profile Picture" className="profile-pic" />
-            <p className="user-name">Mayela</p>
-            <p className="username">@mayela101</p>
+            <p> {user.first_name}</p>
+            <p> @{user.username}</p>
           </a>
         </aside>
     );
