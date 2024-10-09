@@ -55,7 +55,7 @@ function Home() {
     } catch (error) {
         console.error('Error fetching user posts:', error);
     }
-};
+  };
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -104,6 +104,13 @@ function Home() {
   const cancelPost = () => {
     reset();
     setShowPostBox(false);
+  };
+
+  // Add a refresh function to fetch posts again when the button is clicked
+  const refreshPosts = () => {
+    if (userID) {
+      fetchUserPosts(userID); // Fetch posts when the refresh button is clicked
+    }
   };
 
   return (
@@ -158,7 +165,11 @@ function Home() {
         </main>
 
         <div className="App-posts">
-          <h2>Your Posts</h2>
+          <div className="posts-header">
+            <h2>Your Posts</h2>
+            <button className="refresh-button" onClick={refreshPosts}>Refresh</button>
+          </div>
+
           {userPosts.length > 0 ? (
             userPosts.map((post, index) => (
               <div key={index} className="post">
