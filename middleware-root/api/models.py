@@ -38,7 +38,7 @@ class Communitypost(models.Model):
 
 class Createdposts(models.Model):
     userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserID')  # Field name made lowercase. The composite primary key (UserID, PostID, UCPID) found, that is not supported. The first column is selected.
-    postid = models.ForeignKey('Posts', models.DO_NOTHING, db_column='PostID')  # Field name made lowercase.
+    postid = models.CharField(db_column='PostID',max_length=16)  # Field name made lowercase.
     ucpid = models.CharField(db_column='UCPID', max_length=16, primary_key=True)  # Field name made lowercase.
 
     class Meta:
