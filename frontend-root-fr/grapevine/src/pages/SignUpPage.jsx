@@ -56,11 +56,11 @@ const SignUpPage = () => {
   return (
     <form onSubmit={handleSubmit(submission)}>
       <div className='container'>
-        <MyTextField label="First Name" name="firstname" control={control} placeholder="First Name" type="text"/>
-        <MyTextField label="Last Name" name="lastname" control={control} placeholder="Last Name" type="text"/>
-        <MyTextField label="Username" name="username" control={control} placeholder="Username" type="text"/>
-        <MyTextField label="Email" name="email" control={control} placeholder="Email Address" type="text"/>
-        <MyTextField label="Password" name="userpassword" control={control} placeholder="Enter User Password" type="password"/>
+        <MyTextField label="First Name" name="firstname" control={control} placeholder="First Name" type="text" maxLength = {45}/>
+        <MyTextField label="Last Name" name="lastname" control={control} placeholder="Last Name" type="text" maxLength = {45}/>
+        <MyTextField label="Username" name="username" control={control} placeholder="Username" type="text"maxLength = {40}/>
+        <MyTextField label="Email" name="email" control={control} placeholder="Email Address" type="text"maxLength = {120}/>
+        <MyTextField label="Password" name="userpassword" control={control} placeholder="Enter User Password" type="password" maxLength = {40}/>
         <button className="Intro-buttons" type="submit" disabled={loading}>
           {loading ? "Signing Up..." : "Sign Up"}
         </button>
