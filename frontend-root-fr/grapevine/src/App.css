@@ -310,7 +310,6 @@
   background-color: #e0e0e0;
 }
 
-
 @font-face {
   font-family: 'VinesDay'; 
   src: url('/public/fonts/FleurDeLeah.ttf') format('truetype'); 
@@ -334,4 +333,57 @@
 
 .refresh-button:hover {
   background-color: #0056b3;
+}
+
+.Chat-section {
+  margin-left: 20px;
+  padding: 20px;
+}
+
+.Chat-chat {
+  display: flex;
+  flex-direction: column;
+  height: 650px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.chat-bubble {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.sender-message {
+  background-color: #f1f1f1;
+  align-self: flex-start;
+}
+
+.user-message {
+  background-color: #f1f1f1;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.Chat-input {
+  display: flex;
+}
+
+
+.Chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.Chat-input button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #026806;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

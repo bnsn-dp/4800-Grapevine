@@ -5,7 +5,8 @@ import GetSidebar from '../functions/display';
 function Messages() {
   const navigate = useNavigate();
   const [selectedMessage, setSelectedMessage] = useState(null);
-
+  const [userMessage, setUserMessage] = useState('');
+  const [conversation, setChat] = useState([]);
 
   const messages = [
     { id: 1, sender: "Damian", text: "Mayela is the BEST teammate ever, projects are so much fun with her!" },
@@ -15,10 +16,16 @@ function Messages() {
     { id: 5, sender: "Canaan", text: "Hi guys, sorry I can't make it to class today :(" },
   ];
 
-
   const getMessagePreview = (text) => {
     const maxLength = 40;
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+  };
+
+  const handleSendMessage = () => {
+    if (userMessage.trim() == '') return; // Checks for empty message
+    const newMessage = { id: Date.now(), sender: "You", text: userMessage };
+    setChat([...conversation, newMessage]); 
+    setUserMessage(''); //Clear
   };
 
   return (
@@ -28,6 +35,8 @@ function Messages() {
       </header>
       <div className="App-content">
         <GetSidebar />
+
+        {/* Chat List */}
         <div className="Messages-list-container">
           <h2 className="Messages-list-title">Chats</h2>
           <div className="Messages-list">
@@ -36,7 +45,10 @@ function Messages() {
                 <li
                   key={message.id}
                   className="message-item"
-                  onClick={() => setSelectedMessage(message)}
+                  onClick={() => {
+                    setSelectedMessage(message);
+                    setChat([{ sender: message.sender, text: message.text }]);
+                  }}
                   style={{ cursor: 'pointer' }}
                 >
                   <strong>{message.sender}</strong>
@@ -45,8 +57,37 @@ function Messages() {
               ))}
             </ul>
           </div>
-
         </div>
+
+        {/* Chat Section */}
+        {selectedMessage && (
+          <div className="Chat-section">
+            <h2>{selectedMessage.sender}</h2>
+            <div className="Chat-chat">
+              {conversation.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`chat-bubble ${msg.sender === 'You' ? 'user-message' : 'sender-message'}`}
+                >
+                  {msg.text}
+                </div>
+              ))}
+            </div>
+
+
+            <div className="Chat-input">
+              <input
+                type="text"
+                placeholder="Type a message..."
+                value={userMessage}
+                onChange={(e) => setUserMessage(e.target.value)}
+              />
+              <button onClick={handleSendMessage}>Send</button>
+            </div>
+          </div>
+        )}
+
+
       </div>
     </div>
   );
