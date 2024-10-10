@@ -15,3 +15,13 @@ class CreatedPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Createdposts
         fields = ('userid', 'postid', 'ucpid')
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = ('mid', 'description', 'sender', 'crid')
+
+class ChatRoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Chatroom
+        fields = ('crid', 'user1', 'user2')

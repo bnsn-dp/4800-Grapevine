@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from rest_framework import viewsets, permissions, status
+from rest_framework.decorators import api_view
+
 from .models import *
 from .serializers import *
 from rest_framework.response import Response
@@ -36,6 +38,24 @@ def getCreatedPostID(request):
         rowCount = row[0] + 1
         formatted_string = f"UCP{str(rowCount).zfill(13)}"
     return JsonResponse({'genString': formatted_string})
+
+def getChatroomID(request):
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT COUNT(*) FROM ChatRoom')
+        row = cursor.fetchone()
+        rowCount = row[0] + 1
+        formatted_string = f"CR{str(rowCount).zfill(14)}"
+    return JsonResponse({'genString': formatted_string})
+
+@api_view(['GET'])
+def get_user_chatrooms(request):
+    user_id = request.query_params.get('user_id', None)
+    if user_id is None:
+        return Response({"error": "user_id parameter is required"}, status=400)
+
+    chatrooms = Chatroom.objects.filter(user1=user_id) | Chatroom.objects.filter(user2=user_id)
+    serializer = ChatRoomSerializer(chatrooms, many=True)
+    return Response(serializer.data)
 
 @csrf_exempt
 def login_user(request):
@@ -270,4 +290,78 @@ class CreatedPostsViewset(viewsets.ModelViewSet):
     def destroy(self, request, pk=None):
         user = self.queryset.get(pk=pk)
         user.delete()
+        return Response(status=204)
+
+class MessageViewset(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny]
+    queryset = Message.objects.all()
+    serializer_class = UserSerializer
+
+    def list(self, request):
+        queryset = self.queryset
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
+
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=400)
+
+    def retrieve(self, request, pk=None):
+        message = self.queryset.get(pk=pk)
+        serializer = self.serializer_class(message)
+        return Response(serializer.data)
+
+    def update(self, request, pk=None):
+        message = self.queryset.get(pk=pk)
+        serializer = self.serializer_class(message, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=400)
+
+    def destroy(self, request, pk=None):
+        message = self.queryset.get(pk=pk)
+        message.delete()
+        return Response(status=204)
+
+class ChatRoomViewset(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny]
+    queryset = Chatroom.objects.all()
+    serializer_class = UserSerializer
+
+    def list(self, request):
+        queryset = self.queryset
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
+
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=400)
+
+    def retrieve(self, request, pk=None):
+        chatroom = self.queryset.get(pk=pk)
+        serializer = self.serializer_class(chatroom)
+        return Response(serializer.data)
+
+    def update(self, request, pk=None):
+        chatroom = self.queryset.get(pk=pk)
+        serializer = self.serializer_class(chatroom, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=400)
+
+    def destroy(self, request, pk=None):
+        chatroom = self.queryset.get(pk=pk)
+        chatroom.delete()
         return Response(status=204)

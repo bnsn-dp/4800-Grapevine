@@ -1,6 +1,27 @@
 from django.db import models
 
 # Create your models here.
+
+class Chatroom(models.Model):
+    crid = models.CharField(db_column='CRID', primary_key=True, max_length=16)  # Field name made lowercase.
+    user1 = models.CharField( max_length=16, db_column='User1')  # Field name made lowercase.
+    user2 = models.CharField(max_length=16, db_column='User2')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'ChatRoom'
+
+class Message(models.Model):
+    mid = models.CharField(db_column='MID', primary_key=True, max_length=16)  # Field name made lowercase.
+    description = models.CharField(db_column='Description', max_length=512)  # Field name made lowercase.
+    sent = models.DateTimeField(db_column='Sent', auto_now_add=True)  # Field name made lowercase.
+    sender = models.CharField(db_column='Sender', max_length=16)  # Field name made lowercase.
+    crid = models.CharField(db_column='CRID', max_length=16)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Message'
+
 class Comments(models.Model):
     userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserID')  # Field name made lowercase. The composite primary key (UserID, PostID, CommentID) found, that is not supported. The first column is selected.
     postid = models.ForeignKey('Posts', models.DO_NOTHING, db_column='PostID')  # Field name made lowercase.
