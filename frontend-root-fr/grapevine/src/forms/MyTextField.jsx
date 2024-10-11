@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import { Controller } from 'react-hook-form';
 
 export default function MyTextField(props) {
-  const { label, placeholder, name, control, type, multiline = false, rows = 1, maxLength } = props;
+  const { label, placeholder, name, control, type, multiline = false, rows = 1, maxLength, resizable = false } = props;
   const [charCount, setCharCount] = useState(0);
 
   const handleCharChange = (event, onChange) => {
@@ -11,6 +11,8 @@ export default function MyTextField(props) {
     if (maxLength && value.length <= maxLength) {
       setCharCount(value.length); // Update character count
       onChange(value); // Pass the value to the form state
+    } else if (!maxLength) {
+      onChange(value); // If no maxLength, just update
     }
   };
 
@@ -36,13 +38,13 @@ export default function MyTextField(props) {
             rows={rows}
             inputProps={{ maxLength }} // Set the maxLength if provided
             sx={{
-              resize: 'both',
+              resize: resizable ? 'both' : 'none', // Toggle resizing based on prop
               overflow: 'auto',
             }}
             InputProps={{
               sx: {
                 '& textarea': {
-                  resize: 'both',
+                  resize: resizable ? 'both' : 'none', // Apply based on resizable prop
                   overflow: 'auto'
                 }
               }
