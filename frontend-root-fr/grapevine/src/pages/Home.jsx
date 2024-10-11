@@ -156,6 +156,7 @@ function Home() {
                   multiline={true}
                   rows={4}
                   maxLength={250}
+                  resizable={true}
                 />
                 <button className="confirm-button" type="submit">Confirm</button>
                 <button className="confirm-button" type="button" onClick={cancelPost}>Cancel</button>
@@ -167,7 +168,7 @@ function Home() {
         <div className="App-posts">
           <div className="posts-header">
             <h2 style={{ fontStyle: 'italic' }}>The Trellis</h2>
-            <button className="refresh-button" onClick={refreshPosts}>Refresh</button>
+            <button className="refresh-button" onClick={refreshPosts}>&#x21bb;</button>
           </div>
 
           {userPosts.length > 0 ? (
@@ -176,7 +177,7 @@ function Home() {
                 <p><strong>@</strong> {post.username}</p>
                 <p><strong>Image:</strong> <a href={post.imagelink} target="_blank" rel="noopener noreferrer">{post.imagelink}</a></p>
                 <p><strong>Description:</strong> {post.description}</p>
-                <p><strong>Posted on:</strong> {post.datetime}</p>
+                <p><strong>Posted on:</strong> {new Date(post.datetime).toLocaleString()}</p>
               </div>
             ))
           ) : (
