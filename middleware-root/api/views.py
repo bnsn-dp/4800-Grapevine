@@ -23,6 +23,16 @@ def getUserID(request):
         formatted_string = f"U{str(rowCount).zfill(15)}"
     return JsonResponse({'genString': formatted_string})
 
+
+def getMessageID(request):
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT COUNT(*) FROM Message')
+        row = cursor.fetchone()
+        rowCount = row[0] + 1
+        formatted_string = f"M{str(rowCount).zfill(15)}"
+    return JsonResponse({'genString': formatted_string})
+
+
 def getPostID(request):
     with connection.cursor() as cursor:
         cursor.execute('SELECT COUNT(*) FROM Posts')
@@ -56,6 +66,31 @@ def get_user_chatrooms(request):
     chatrooms = Chatroom.objects.filter(user1=user_id) | Chatroom.objects.filter(user2=user_id)
     serializer = ChatRoomSerializer(chatrooms, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_messages(request):
+    crid = request.query_params.get('crid', None)  # Get chat room ID (crid) from the query parameters
+    if not crid:
+        return JsonResponse({'error': 'Chat room ID (crid) is required'}, status=400)
+
+    try:
+        # Fetch messages for the given chat room ID and sort by sent attribute (ascending order)
+        messages = Message.objects.filter(crid=crid).order_by('sent')
+
+        # Serialize only the necessary fields: sender, description, and sent
+        serialized_messages = []
+        for message in messages:
+            serialized_messages.append({
+                'sender': message.sender,  # Assuming sender is a ForeignKey to the User model
+                'description': message.description,
+                'sent': message.sent.isoformat(),  # Serialize sent as ISO format
+            })
+
+        # Return the list of serialized messages as a JSON response
+        return JsonResponse(serialized_messages, safe=False, status=200)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
 
 @csrf_exempt
 def login_user(request):
@@ -295,7 +330,7 @@ class CreatedPostsViewset(viewsets.ModelViewSet):
 class MessageViewset(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
     queryset = Message.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = MessageSerializer
 
     def list(self, request):
         queryset = self.queryset
@@ -332,7 +367,7 @@ class MessageViewset(viewsets.ModelViewSet):
 class ChatRoomViewset(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
     queryset = Chatroom.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = ChatRoomSerializer
 
     def list(self, request):
         queryset = self.queryset

@@ -17,4 +17,7 @@ urlpatterns = [
     path('api/get_user_posts/', get_user_posts, name='getuserposts'),
     path('api/getchatroomid/', getChatroomID, name='getChatroomID'),
     path('api/get_user_chatrooms/', get_user_chatrooms, name='get_user_chatrooms'),
+    path('api/getmessageid/', getMessageID, name='getmessageid'),
+    path('api/get_messages/', get_messages, name='get_messages'),
+
               ] + router.urls
