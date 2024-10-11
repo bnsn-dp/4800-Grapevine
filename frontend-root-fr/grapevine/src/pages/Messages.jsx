@@ -93,6 +93,59 @@ function Messages() {
     scrollToBottom();
   }, [conversation]);
 
+  // Handle searching for a user by username
+  const handleSearchUser = async () => {
+    try {
+      const response = await AxiosInstance.get(`/users/?username=${searchUsername}`);
+      if (response.data.length > 0) {
+        setFoundUser(response.data[0]); // If user is found, set found user
+      } else {
+        setFoundUser(null); // If no user is found, clear found user
+      }
+    } catch (error) {
+      console.error('Error searching for user:', error);
+      setFoundUser(null); // Clear found user on error
+    }
+  };
+
+  // Handle canceling the chat room creation
+  const handleCancelCreateChat = () => {
+    setShowCreateChat(false);
+    setSearchUsername(''); // Clear the search field
+    setFoundUser(null); // Clear the found user
+  };
+
+  // Handle creating a new chat room
+  const handleCreateChatRoom = async () => {
+    try {
+      if (!currentUserID || !foundUser) return; // Make sure both current user and found user are present
+
+      // Generate CRID for the new chat room
+      const cridResponse = await AxiosInstance.get('api/getchatroomid/');
+      const chatRoomId = cridResponse.data.genString;
+
+      // Create a new chat room with currentUserID as user1 and foundUser.id as user2
+      const newChatRoom = {
+        crid: chatRoomId,
+        user1: currentUserID,
+        user2: foundUser.id,
+      };
+
+      // Post the new chat room to the backend
+      await AxiosInstance.post('chatroom/', newChatRoom);
+
+      // Fetch the updated chat rooms
+      fetchUserChatRooms(currentUserID);
+
+      // Reset and close the modal
+      setShowCreateChat(false);
+      setSearchUsername('');
+      setFoundUser(null);
+    } catch (error) {
+      console.error('Error creating chat room:', error);
+    }
+  };
+
   // Handle sending a new message
   const onSubmit = async (data) => {
     if (!data.message) return; // If no message entered, do nothing
@@ -146,7 +199,7 @@ function Messages() {
                 fontSize: '20px',
                 cursor: 'pointer',
                 marginLeft: '10px',
-                backgroundColor: '#DCF8C6',  // Light green background
+                backgroundColor: '#90EE90',  // Light green background (hexadecimal)
               }}
             >
               +
@@ -160,7 +213,7 @@ function Messages() {
                 fontSize: '20px',
                 cursor: 'pointer',
                 marginLeft: '10px',
-                backgroundColor: '#DAB1DA',  // Light purple background
+                backgroundColor: '#D8BFD8',  // Light purple background (hexadecimal)
               }}
             >
               &#x21bb; {/* Refresh icon */}
@@ -203,7 +256,7 @@ function Messages() {
                     margin: '10px 0',
                     padding: '10px',
                     borderRadius: '10px',
-                    backgroundColor: msg.sender === currentUserID ? '#DCF8C6' : '#DAB1DA',
+                    backgroundColor: msg.sender === currentUserID ? '#DCF8C6' : '#FFF',
                   }}
                 >
                   <p>{msg.description}</p>
@@ -230,7 +283,7 @@ function Messages() {
                 style={{
                   marginLeft: '10px',
                   padding: '10px',
-                  backgroundColor: '#DCF8C6',  // Light green background
+                  backgroundColor: '#90EE90',  // Light green background (hexadecimal)
                   cursor: 'pointer'
                 }}
               >
@@ -242,7 +295,7 @@ function Messages() {
                 style={{
                   marginLeft: '10px',
                   padding: '10px',
-                  backgroundColor: '#DAB1DA',  // Light purple background
+                  backgroundColor: '#D8BFD8',  // Light purple background (hexadecimal)
                   cursor: 'pointer'
                 }}
               >
