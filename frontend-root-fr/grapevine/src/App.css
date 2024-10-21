@@ -411,3 +411,123 @@
   font-size: 18px;
   cursor: pointer;
 }
+
+/* Styling for the profile friends list section */
+.Profile-friends {
+  margin-top: 20px;
+}
+
+.Friends-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Friends-list {
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Styling for each friend in the friends list */
+.Friends-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Friends-list li {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.Friends-list li:last-child {
+  border-bottom: none;
+}
+
+/* Add Friends and Remove Friends buttons */
+.Add-friend-button,
+.Remove-friend-button {
+  background-color: #DCF8C6; /* Light green background for Add Friends button */
+  border: none;
+  color: #333; /* Darker text color for contrast */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+/* Hover effect for Add Friends button */
+.Add-friend-button:hover {
+  background-color: #c0e5aa; /* Slightly darker green for hover */
+}
+
+/* Remove Friends button styling */
+.Remove-friend-button {
+  background-color: #D8BFD8; /* Light purple background for Remove Friends button */
+}
+
+/* Hover effect for Remove Friends button */
+.Remove-friend-button:hover {
+  background-color: #c3a3c3; /* Slightly darker purple for hover */
+}
+
+/* Dialog box styling */
+.FriendDialog {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.FriendDialog input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.FriendDialog button {
+  background-color: #DCF8C6;
+  color: #333;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.FriendDialog button:hover {
+  background-color: #c0e5aa;
+}
+
+.FriendDialog p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Close button for dialogs */
+.FriendDialog .close-button {
+  background-color: #D8BFD8;
+  margin-top: 10px;
+  padding: 10px 15px;
+}
+
+.FriendDialog .close-button:hover {
+  background-color: #c3a3c3;
+}
