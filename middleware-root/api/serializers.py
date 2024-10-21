@@ -25,3 +25,8 @@ class ChatRoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chatroom
         fields = ('crid', 'user1', 'user2')
+
+class FriendsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Friends
+        fields = ('fid', 'friender', 'friendee')

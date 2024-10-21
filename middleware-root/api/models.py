@@ -4,12 +4,22 @@ from django.db import models
 
 class Chatroom(models.Model):
     crid = models.CharField(db_column='CRID', primary_key=True, max_length=16)  # Field name made lowercase.
-    user1 = models.CharField( max_length=16, db_column='User1')  # Field name made lowercase.
+    user1 = models.CharField(max_length=16, db_column='User1')  # Field name made lowercase.
     user2 = models.CharField(max_length=16, db_column='User2')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'ChatRoom'
+
+class Friends(models.Model):
+    fid = models.CharField(db_column='FID', primary_key=True, max_length=16)  # Field name made lowercase.
+    friender = models.CharField(db_column='friender', max_length=16)  # Field name made lowercase.
+    friendee = models.CharField(db_column='friendee', max_length=16)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Friends'
+
 
 class Message(models.Model):
     mid = models.CharField(db_column='MID', primary_key=True, max_length=16)  # Field name made lowercase.
