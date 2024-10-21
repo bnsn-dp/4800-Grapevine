@@ -57,6 +57,15 @@ def getChatroomID(request):
         formatted_string = f"CR{str(rowCount).zfill(14)}"
     return JsonResponse({'genString': formatted_string})
 
+def getFriends(request):
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT COUNT(*) FROM FriendList')
+        row = cursor.fetchone()
+        rowCount = row[0] + 1
+        formatted_string = f"F{str(rowCount).zfill(15)}"
+    return JsonResponse({'genString': formatted_string})
+
+
 @api_view(['GET'])
 def get_user_chatrooms(request):
     user_id = request.query_params.get('user_id', None)
