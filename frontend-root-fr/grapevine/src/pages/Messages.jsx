@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import GetSidebar from '../functions/display';
 import AxiosInstance from '../Axios'; // Assuming AxiosInstance is configured for API calls
 import MyTextField from '../forms/MyTextField'; // Assuming MyTextField is your custom text field component
-
+import '../App.css';
 function Messages() {
   const { handleSubmit, control, reset } = useForm(); // Initialize react-hook-form
   const navigate = useNavigate();
@@ -256,7 +256,7 @@ function Messages() {
                     margin: '10px 0',
                     padding: '10px',
                     borderRadius: '10px',
-                    backgroundColor: msg.sender === currentUserID ? '#DCF8C6' : '#FFF',
+                    backgroundColor: msg.sender === currentUserID ? '#DCF8C6' : '#D8BFD8',
                   }}
                 >
                   <p>{msg.description}</p>
