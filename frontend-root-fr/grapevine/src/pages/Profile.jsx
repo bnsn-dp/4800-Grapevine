@@ -19,6 +19,50 @@ function Profile() {
   }, []);
 
 
+  const FollowButton = ({ isFollwingInitial }) => {
+    const [isFollowing, setIsFollowing] = useState(isFollowingInitial);
+
+    const handleFollow = () => {
+      setIsFollowing(!isFollowing);
+    };
+
+    return (
+      <button onClick={handleFollow}>
+        {isFollowing ? 'Unfollow' : 'Follow'}
+      </button>
+    );
+  };
+
+  const FollowersList = ({ userId }) => {
+    const [followers, setFollowers] = useState([]);
+  
+    useEffect(() => {
+      // Mock fetch function, replace with your actual API call
+      const fetchFollowers = async () => {
+        try {
+          const response = await fetch(`/api/followers/${userId}`);
+          const data = await response.json();
+          setFollowers(data);
+        } catch (error) {
+          console.error('Error fetching followers:', error);
+        }
+      };
+  
+      fetchFollowers();
+    }, [userId]);
+  
+    return (
+      <div>
+        <h3>Followers</h3>
+        <ul>
+          {followers.map((follower) => (
+            <li key={follower.id}>{follower.name}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   const [isEditing, setIsEditing] = useState(false);
   const [newBio, setNewBio] = useState(user.bio);
 
