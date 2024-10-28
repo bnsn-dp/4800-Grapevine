@@ -1,3 +1,14 @@
+/* Ensure the body and html take the full viewport height */
+html, body {
+  height: 100vh; /* 100% of the viewport height */
+  margin: 0; /* Remove default margins */
+  display: flex; /* Enable flexbox for alignment */
+  flex-direction: column;
+  background-color: #ffffff; /* Set a consistent background color */
+  gap: 5rem; /* Adds spacing between sidebar and content */
+
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -23,14 +34,18 @@
   display: flex;
   flex: 1;
   background-color: #f8f8f8;
+
 }
 
 .App-sidebar {
-  width: 225px;
+  flex: 0 0 15%;
+  max-width: 300px; /* Optional max width to limit its size on larger screens */
+  height: 100vh;
   background-color: #e0e0e0;
   padding: 0rem 0rem 0rem 1.5rem;
   border-radius: 20px;
-  margin: 1rem;
+  margin: 1rem 1rem 1rem 1rem;
+  box-sizing: border-box; /* Ensure padding is included within the width */
 
 }
 
@@ -530,5 +545,98 @@
 
 .FriendDialog .close-button:hover {
   background-color: #c3a3c3;
+}
+
+.welcome-message p {
+  font-size: 24px;  /* Larger font size */
+  font-weight: bold;  /* Bold text */
+  margin: 20px 0;
+}
+
+.welcome-message p {
+  font-size: 24px;  /* Larger font size */
+  font-weight: bold;  /* Bold text */
+  font-style: italic;  /* Italic text */
+  margin: 20px 0;
+}
+
+/* Search container styling */
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Posts section should take up remaining height and be scrollable */
+.App-posts {
+  width: 75%; /* Match the width of the search bar */
+  max-height: calc(100vh * .6); /* Dynamic height: full viewport height minus the height of other elements */
+  overflow-y: auto; /* Scrollable container */
+  border: 1px solid #ccc; /* Optional: Add a border */
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #f9f9f9; /* Optional: Add a background */
+    /* Hide the scrollbar for Webkit browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.App-posts::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar for Chrome, Safari, and Edge */
+}
+
+/* Ensure the posts section's width matches that of the search input */
+.App-posts, .search-input {
+  width: 75%; /* Posts section should be 75% width to match the search input */
+}
+
+/* Post styling */
+.post {
+  padding: 10px;
+  border-bottom: 1px solid #eee; /* Optional: Add a separator between posts */
+  margin-bottom: 10px;
+}
+
+.confirm-button {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.refresh-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* Adds space between posts and friends sections */
+  margin-top: 1rem;
+}
+
+.posts-section {
+  flex: 3;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  overflow: auto; /* Enables scroll if content exceeds height */
+}
+
+.friends-section {
+  flex: 1;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  border-radius: 8px;
 }
 
