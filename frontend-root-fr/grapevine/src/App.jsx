@@ -7,6 +7,7 @@ import Profile from "./pages/Profile"
 import IntroPage from './pages/Intro';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
+import FriendProfile from './pages/FriendProfile';
 
 function App() {
   return (
@@ -14,11 +15,12 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
-            <Route path="/" element={<IntroPage />} />
+            <Route path="/" element={<IntroPage />} />ssssssssss
             <Route path="/communities" element={<Communities />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path ="/profile/:id" element={<FriendProfile />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
           </Routes>

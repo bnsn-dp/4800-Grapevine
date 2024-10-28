@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import GetSidebar from '../functions/display';
 import AxiosInstance from '../Axios';  // Assuming AxiosInstance is your configured Axios
 import '../App.css';
@@ -217,7 +218,11 @@ useEffect(() => {
                 {friends.length > 0 ? (
                   <ul>
                     {friends.map((friend) => (
-                      <li key={friend.id}>{friend.first_name} {friend.last_name} @{friend.username}</li>
+                      <li key={friend.id}>
+                        <Link to ={`/profile/${friend.id}`}>
+                          {friend.first_name} {friend.last_name} @{friend.username}
+                      </Link>
+                      </li>
                     ))}
                   </ul>
                 ) : (
