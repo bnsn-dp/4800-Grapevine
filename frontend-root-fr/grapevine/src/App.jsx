@@ -15,7 +15,7 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
-            <Route path="/" element={<IntroPage />} />ssssssssss
+            <Route path="/" element={<IntroPage />} />
             <Route path="/communities" element={<Communities />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/home" element={<Home />} />
@@ -30,4 +30,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
