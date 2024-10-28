@@ -1,0 +1,81 @@
+/* Profile.css */
+
+.ProfilePage-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the left */
+  width: 100%;
+}
+
+.ProfilePage-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.Bio-content {
+  padding: 0.5rem;
+  width: 100%; /* Ensure width matches container */
+  overflow: hidden; /* Allow overflow if content is too long */
+
+}
+.Profile-friends {
+  width: 75%; /* Adjust width as desired */
+  text-align: left;
+}
+
+.Friends-list {
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.profile-posts-container {
+  width: 75%; /* Align Posts section width */
+  max-width: 75%;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.Bio-buttons {
+  background-color: #DCF8C6; /* Match button color */
+  color: #4CAF50; /* Darker green text */
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.Bio-buttons:hover {
+  background-color: #C8E6C9; /* Slightly darker green on hover */
+  color: #388E3C; /* Darker text on hover */
+}
+
+.Bio-content textarea {
+  width: 100%; /* Full width within the bio container */
+  border: none;
+  outline: none;
+  resize: vertical; /* Allow vertical resizing */
+  background-color: #f0fff0; /* Match the bio background */
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: #4CAF50; /* Match text color */
+  font-style: italic;
+  border-radius: 4px; /* Rounded corners */
+  box-sizing: border-box; /* Include padding in width */
+  overflow-y: auto; /* Add scrollbar for overflow */
+
+}
+
+.bio-text {
+  max-width: 300px;
+  max-height: 120px; /* Limit height to prevent overflow */
+  overflow: hidden;
+  display: block;
+  font-family: inherit; /* Match the font style */
+  padding: 5px;
+}
