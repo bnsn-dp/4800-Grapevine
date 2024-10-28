@@ -9,16 +9,15 @@ function FriendProfile() {
 
 
   return (
-    <div className="App"> 
-      <header className="App-header">
-        <h1 className="App-title">Grapevine</h1>
-      </header>
-      <div className="App-content">
-
-        </div>
-    </div>
-    
-  );
+      <div>
+        <header className="App-header">
+          <h1 className="App-title">Grapevine</h1>
+        </header>
+        <div className="App-content">
+          <GetSidebar />
+            </div>
+          </div>
+    );
 }
 
 export default FriendProfile;

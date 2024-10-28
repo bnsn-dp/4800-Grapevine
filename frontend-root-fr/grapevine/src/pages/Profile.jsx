@@ -219,7 +219,7 @@ useEffect(() => {
                   <ul>
                     {friends.map((friend) => (
                       <li key={friend.id}>
-                        <Link to ={`/profile/${friend.id}`}>
+                        <Link to ={`/profile/${friend.username}`}>
                           {friend.first_name} {friend.last_name} @{friend.username}
                       </Link>
                       </li>

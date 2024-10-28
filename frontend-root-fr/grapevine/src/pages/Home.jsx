@@ -106,10 +106,9 @@ function Home() {
     setShowPostBox(false);
   };
 
-  // Add a refresh function to fetch posts again when the button is clicked
   const refreshPosts = () => {
     if (userID) {
-      fetchUserPosts(userID); // Fetch posts when the refresh button is clicked
+      fetchUserPosts(userID);
     }
   };
 
@@ -143,7 +142,7 @@ function Home() {
                 <MyTextField
                   label="Image Link"
                   name="imageLink"
-                  control={control} // Passing control prop
+                  control={control}
                   placeholder="Enter image URL"
                   maxLength={250}
                 />
@@ -151,7 +150,7 @@ function Home() {
                 <MyTextField
                   label="Description"
                   name="description"
-                  control={control} // Passing control prop
+                  control={control}
                   placeholder="Enter description"
                   multiline={true}
                   rows={4}

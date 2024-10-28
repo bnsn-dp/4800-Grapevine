@@ -2,61 +2,46 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const GetSidebar = () => {
-
   const navigate = useNavigate();
-  // State to hold user data
   const [user, setUser] = useState({ first_name: '', last_name: '', username: '' });
 
   useEffect(() => {
-    // Retrieve the user data from localStorage
     const storedUser = JSON.parse(localStorage.getItem('user'));
-
-    // If user data exists in localStorage, set it to state
     if (storedUser) {
       setUser(storedUser);
     }
   }, []);
 
-    return (
-        <aside className="App-sidebar">
-          <nav>
-            <ul>
-              <h2 className="Sidebar-title">The Winery</h2>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/home"); }}>
-                  <img src="/icons/Home.png" alt="Home Icon" className="nav-icons" />
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/messages"); }}>
-                  <img src="/icons/Chat.png" alt="Chat Icon" className="nav-icons" />
-                  Messages
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/Communities"); }}>
-                  <img src="/icons/Communities.png" alt="Community Icon" className="nav-icons" />
-                  Communities
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); navigate("/"); }}>
-                  <img src="/icons/Settings.png" alt="Setting Icon" className="nav-icons" />
-                  Settings
-                </a>
-              </li>
-            </ul>
-          </nav>
+  const NavItem = ({ href, iconSrc, altText, text }) => (
+    <li>
+      <a href="#" onClick={(e) => { e.preventDefault(); navigate(href); }}>
+        <img src={iconSrc} alt={altText} className="nav-icons" />
+        {text}
+      </a>
+    </li>
+  );
 
-          <a href="#" onClick={(e) => { e.preventDefault(); navigate("/profile"); }} className="user-info">
-            <img src="/SmiskiPFP.png" alt="Profile Picture" className="profile-pic" />
-            <p> {user.first_name}</p>
-            <p> @{user.username}</p>
-          </a>
-        </aside>
-    );
-  };
-  
-  export default GetSidebar;
-  
+  const SidebarContent = () => (
+    <aside className="App-sidebar">
+      <nav>
+        <ul>
+          <h2 className="Sidebar-title">The Winery</h2>
+          <NavItem href="/home" iconSrc="/icons/Home.png" altText="Home Icon" text="Home" />
+          <NavItem href="/messages" iconSrc="/icons/Chat.png" altText="Chat Icon" text="Messages" />
+          <NavItem href="/Communities" iconSrc="/icons/Communities.png" altText="Community Icon" text="Communities" />
+          <NavItem href="/" iconSrc="/icons/Settings.png" altText="Setting Icon" text="Settings" />
+        </ul>
+      </nav>
+
+      <a href="#" onClick={(e) => { e.preventDefault(); navigate("/profile"); }} className="user-info">
+        <img src="/SmiskiPFP.png" alt="Profile Picture" className="profile-pic" />
+        <p>{user.first_name}</p>
+        <p>@{user.username}</p>
+      </a>
+    </aside>
+  );
+
+  return <SidebarContent />;
+};
+
+export default GetSidebar;
