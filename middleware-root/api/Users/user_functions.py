@@ -3,7 +3,7 @@ from .user_model import Users
 from django.db import connection
 import json
 from django.views.decorators.csrf import csrf_exempt
-from .models import Createdposts, Posts, Friends
+from api.models import Createdposts, Posts, Friends
 
 def getUserID(request):
     with connection.cursor() as cursor:
