@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import *
+from .user_view import UserViewset
+from .user_functions import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
