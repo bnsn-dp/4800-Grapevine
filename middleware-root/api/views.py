@@ -104,7 +104,9 @@ def check_friendship_status(request):
         user = Users.objects.get(id=user_id)
         friendee = Users.objects.get(id=friendee_id)
 
-        if Friends.objects.filter(friender=user, friendee=friendee).exists():
+        if user == friendee:
+            return Response({'status': 'friend'}, status=status.HTTP_200_OK)
+        elif Friends.objects.filter(friender=user, friendee=friendee).exists():
             return Response({'status': 'friend'}, status=status.HTTP_200_OK)
         elif Friends.objects.filter(friender=friendee, friendee=user).exists():
             return Response({'status': 'friend'}, status=status.HTTP_200_OK)
