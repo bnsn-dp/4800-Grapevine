@@ -469,7 +469,7 @@ html, body {
   background-color: #DCF8C6; /* Light green background for Add Friends button */
   border: none;
   color: #333; /* Darker text color for contrast */
-  padding: 10px 20px;
+  padding: 5px 5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
