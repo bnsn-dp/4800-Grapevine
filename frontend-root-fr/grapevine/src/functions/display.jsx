@@ -33,7 +33,7 @@ const GetSidebar = () => {
         </ul>
       </nav>
 
-      <a href="#" onClick={(e) => { e.preventDefault(); navigate("/profile"); }} className="user-info">
+      <a href="#" onClick={(e) => { e.preventDefault(); navigate(`/profile/${user.username}`); }} className="user-info">
         <img src="/SmiskiPFP.png" alt="Profile Picture" className="profile-pic" />
         <p>{user.first_name}</p>
         <p>@{user.username}</p>
