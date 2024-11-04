@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import AxiosInstance from '../Axios';
 import '../Posts.css'
+import { Link } from 'react-router-dom';
 
 const GetPosts = ({ userID, type }) => {
   const [userPosts, setUserPosts] = useState([]);
@@ -90,7 +91,12 @@ const GetPosts = ({ userID, type }) => {
         {userPosts.length > 0 ? (
           userPosts.map((post, index) => (
             <div key={index} className="post">
-              <p><strong>@</strong> {post.username}</p>
+              <p>
+                <strong>@</strong>
+                <Link to={`/profile/${post.username}`} className="username-link">
+                  {post.username}
+                </Link>
+              </p>
               <p><strong>Image:</strong> <a href={post.imagelink} target="_blank" rel="noopener noreferrer">{post.imagelink}</a></p>
               <p><strong>Description:</strong> {post.description}</p>
               <p><strong>Posted on:</strong> {new Date(post.datetime).toLocaleString()}</p>
