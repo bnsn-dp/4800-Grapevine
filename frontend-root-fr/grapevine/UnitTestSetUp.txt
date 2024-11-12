@@ -1,0 +1,29 @@
+To start Unit testing
+    1. Ensure that these libraries are installed:
+        - npm i -D vitest
+        - npm i -D jsdom @testing-library/react @testing-library/jest-dom
+    2. CD into 4800-GrapeVine/frontend-root-fr/grapevine
+    3. Open Terminal and run `npm test`
+        - This will open a general test framework that will run all testing files
+        - It will show all passed tests and failed tests. As well it will show which test files
+          passed / failed the tests.
+    4. Create a new test file `testName.test.jsx`
+        - Have these imports to assist in creation of unit tests:
+            import { describe, test, expect, vi } from 'vitest';
+            import { render, screen, fireEvent, getByText } from '@testing-library/react';
+            import { MemoryRouter, Route, Routes } from 'react-router-dom';
+            # These last two are important to extend the usage of the unit test to include jest-dom 
+            # test cases and expected outputs such as .isVisiable
+            import matchers from '@testing-library/jest-dom/matchers';
+            expect.extend(matchers);
+    5. Create Unit Tests
+        - Always follows this format:
+            describe("description of unit test file", () => {
+                test('description of a single unit test', () =>{
+                    # code to test functionality of aspect of test#
+                    expect(# some form of output based on the code written#)
+                })
+            })
+    6. Debug the test
+        - Vitest gives a description of the issue that caused the failed test. Adjust the test to ensure
+          correct testing requirements and then adjust the code being tested.

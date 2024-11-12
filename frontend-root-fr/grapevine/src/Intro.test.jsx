@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, getByText } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import Intro from './pages/Intro';
 import SignUpPage from './pages/SignUpPage';
@@ -84,5 +84,59 @@ describe('Intro Component', () => {
         fireEvent.click(loginButton);
         fireEvent.click(loginButton);
         expect(screen.getByText(/Log In/i)).toBeVisible();
+    });
+
+    test('allowing keyboard navigation and activation', () => {
+        render(
+            <MemoryRouter>
+                <Intro />
+            </MemoryRouter>
+        );
+        const loginButton = screen.getByText(/Log In/i);
+        const signUpButton = screen.getByText(/Sign Up/i);
+
+        loginButton.focus();
+        expect(loginButton).toHaveFocus();
+
+        fireEvent.keyDown(loginButton, { key: 'Enter', code: 'Enter' });
+
+        signUpButton.focus();
+        expect(signUpButton).toHaveFocus();
+
+        fireEvent.keyDown(signUpButton, { key: ' ' });
+    });
+
+    test('buttons have correct roles and aria labels', () =>{
+        render(
+            <MemoryRouter>
+                <Intro />
+            </MemoryRouter>
+        );
+
+        const loginButton = screen.getByText(/Log In/i);
+        const SignUpButton = screen.getByText(/Sign Up/i);
+
+        expect(loginButton).toHaveAttribute('role', 'button');
+        expect(loginButton).toHaveAttribute('aria-label', 'Log In');
+        expect(SignUpButton).toHaveAttribute('role', 'button');
+        expect(SignUpButton).toHaveAttribute('aria-label', 'Sign Up');
+
+    });
+
+    test('focuses on first input when navigating to Sign Up page', async () => {
+        render(
+            <MemoryRouter initialEntries={['/']}>
+                <Routes>
+                    <Route path="/" element={<Intro />} />
+                    <Route path="/signup" element={<SignUpPage />} />
+                </Routes>
+            </MemoryRouter>
+        );
+
+        fireEvent.click(screen.getByText(/Sign Up/i));
+        await waitFor(() => {
+            expect(screen.getByText(/Sign Up/i)).toBeInTheDocument();
+        });
     })
+
 });
