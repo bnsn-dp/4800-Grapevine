@@ -11,22 +11,18 @@ import FriendProfile from './pages/FriendProfile';
 
 function App() {
   return (
-    <>
-      <div className="App">
-        <Router>
-          <Routes>
-            <Route path="/" element={<IntroPage />} />
-            <Route path="/communities" element={<Communities />} />
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/home" element={<Home />} />
-{/*             <Route path="/profile" element={<Profile />} /> */}
-            <Route path="/profile/:username" element={<Profile />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-          </Routes>
-        </Router>
-      </div>
-    </>
+    <div className="App">
+        <Routes>
+          <Route path="/" element={<IntroPage />} />
+          <Route path="/communities" element={<Communities />} />
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/home" element={<Home />} />
+{/*           <Route path="/profile" element={<Profile />} /> */}
+          <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+        </Routes>
+    </div>
   )
 }
 
