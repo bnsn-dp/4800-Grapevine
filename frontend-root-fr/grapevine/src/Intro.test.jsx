@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from 'vitest';
-import { render, screen, fireEvent, getByText } from '@testing-library/react';
+import { render, screen, fireEvent, getByText, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import Intro from './pages/Intro';
 import SignUpPage from './pages/SignUpPage';
