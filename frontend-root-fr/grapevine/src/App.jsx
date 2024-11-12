@@ -12,6 +12,7 @@ import FriendProfile from './pages/FriendProfile';
 function App() {
   return (
     <div className="App">
+    <Router>
         <Routes>
           <Route path="/" element={<IntroPage />} />
           <Route path="/communities" element={<Communities />} />
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
         </Routes>
+        </Router>
     </div>
   )
 }
