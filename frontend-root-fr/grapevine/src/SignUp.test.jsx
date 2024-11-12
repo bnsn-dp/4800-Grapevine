@@ -4,14 +4,13 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import SignUpPage from './pages/SignUpPage';
 import AxiosInstance from './Axios';
 import userEvent from '@testing-library/user-event';
-
-
-
-import matchers from '@testing-library/jest-dom/matchers';
+import * as matchers from '@testing-library/jest-dom/matchers';
 expect.extend(matchers);
 
-AxiosInstance.get = vi.fn();
-AxiosInstance.post = vi.fn();
+vi.mock('AxiosInstance');
+
+// AxiosInstance.get = vi.fn();
+// AxiosInstance.post = vi.fn();
 
 describe('SignUp Component', () =>{
     test('renders all form fields with correct labels and placeholders', () => {
@@ -46,61 +45,63 @@ describe('SignUp Component', () =>{
         expect(submitButton).toBeEnabled();
     });
 
-    test('sumbit button displays Signing Up... and is disabled when loading', () =>{
-        render(
-            <MemoryRouter>
-                <SignUpPage />
-            </MemoryRouter>
-        );
-        const submitButton = screen.getByRole('button', {name: /Sign Up/i});
-        fireEvent.click(submitButton);
+    test('submit button displays "Signing Up..." and is disabled when loading', async () => {
+      render(
+        <MemoryRouter>
+          <SignUpPage />
+        </MemoryRouter>
+      );
 
+      // Fill in the form with default values
+      fireEvent.change(screen.getByPlaceholderText('First Name'), { target: { value: 'John' } });
+      fireEvent.change(screen.getByPlaceholderText('Last Name'), { target: { value: 'Doe' } });
+      fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'johndoe' } });
+      fireEvent.change(screen.getByPlaceholderText('Email Address'), { target: { value: 'john.doe@example.com' } });
+      fireEvent.change(screen.getByPlaceholderText('Enter User Password'), { target: { value: 'password123' } });
+
+      const submitButton = screen.getByRole('button', { name: /Sign Up/i });
+
+      // Click the submit button to trigger the loading state
+      fireEvent.click(submitButton);
+
+      // Wait for the button text to change to "Signing Up..."
+      await waitFor(() => {
         expect(submitButton).toHaveTextContent('Signing Up...');
         expect(submitButton).toBeDisabled();
+      });
     });
 
     test('submits form with generated ID and navigates on success', async () => {
-        AxiosInstance.get.mockResolvedValueOnce({ data: { genString: 'generated-id-123' } });
-        AxiosInstance.post.mockResolvedValueOnce({});
-    
+          // Set up mock responses for axios.get and axios.post
+  AxiosInstance.get.mockResolvedValueOnce({ data: { genString: 'U000000000000050' } });
+  AxiosInstance.post.mockResolvedValueOnce({});  // Mock a successful post response
         render(
             <MemoryRouter>
                 <SignUpPage />
             </MemoryRouter>
         );
-    
-        // Fill out form fields individually, with clears if needed
-        const firstNameInput = screen.getByLabelText(/First Name/i);
-        const lastNameInput = screen.getByLabelText(/Last Name/i);
-        const usernameInput = screen.getByLabelText(/Username/i);
-        const emailInput = screen.getByLabelText(/Email/i);
-        const passwordInput = screen.getByLabelText(/Password/i);
-    
-        await userEvent.clear(firstNameInput);
-        await userEvent.type(firstNameInput, 'John');
-    
-        await userEvent.clear(lastNameInput);
-        await userEvent.type(lastNameInput, 'Doe');
-    
-        await userEvent.clear(usernameInput);
-        await userEvent.type(usernameInput, 'johndoe');
-    
-        await userEvent.clear(emailInput);
-        await userEvent.type(emailInput, 'johndoe@example.com');
-    
-        await userEvent.clear(passwordInput);
-        await userEvent.type(passwordInput, 'Password123!');
-    
+
+        // Fill in the form with default values
+      fireEvent.change(screen.getByPlaceholderText('First Name'), { target: { value: 'John' } });
+      fireEvent.change(screen.getByPlaceholderText('Last Name'), { target: { value: 'Doe' } });
+      fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'johndoe' } });
+      fireEvent.change(screen.getByPlaceholderText('Email Address'), { target: { value: 'john.doe@example.com' } });
+      fireEvent.change(screen.getByPlaceholderText('Enter User Password'), { target: { value: 'password123' } });
+
+      const submitButton = screen.getByRole('button', { name: /Sign Up/i });
+
+      // Click the submit button to trigger the loading state
+      fireEvent.click(submitButton);
         // Submit the form
         fireEvent.click(screen.getByRole('button', { name: /Sign Up/i }));
-    
+
         // Wait for form submission to complete
         await waitFor(() => {
             expect(AxiosInstance.get).toHaveBeenCalledWith('api/getuserid/');
             expect(AxiosInstance.post).toHaveBeenCalledWith('users/', {
-                id: 'generated-id-123',
+                id: 'U000000000000050',
                 username: 'johndoe',
-                userpassword: 'Password123!',
+                userpassword: 'password123',
                 status: 'Active',
                 email: 'johndoe@example.com',
                 firstname: 'John',
