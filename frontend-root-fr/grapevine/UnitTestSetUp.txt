@@ -2,6 +2,7 @@ To start Unit testing
     1. Ensure that these libraries are installed:
         - npm i -D vitest
         - npm i -D jsdom @testing-library/react @testing-library/jest-dom
+        - npm install -D  @testing-library/user-event
     2. CD into 4800-GrapeVine/frontend-root-fr/grapevine
     3. Open Terminal and run `npm test`
         - This will open a general test framework that will run all testing files
