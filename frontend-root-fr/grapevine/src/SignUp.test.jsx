@@ -73,8 +73,8 @@ describe('SignUp Component', () =>{
 
     test('submits form with generated ID and navigates on success', async () => {
           // Set up mock responses for axios.get and axios.post
-  AxiosInstance.get.mockResolvedValueOnce({ data: { genString: 'U000000000000050' } });
-  AxiosInstance.post.mockResolvedValueOnce({});  // Mock a successful post response
+        AxiosInstance.get.mockResolvedValueOnce({ data: { genString: 'U000000000000050' } });
+        AxiosInstance.post.mockResolvedValueOnce({});  // Mock a successful post response
         render(
             <MemoryRouter>
                 <SignUpPage />
@@ -82,16 +82,16 @@ describe('SignUp Component', () =>{
         );
 
         // Fill in the form with default values
-      fireEvent.change(screen.getByPlaceholderText('First Name'), { target: { value: 'John' } });
-      fireEvent.change(screen.getByPlaceholderText('Last Name'), { target: { value: 'Doe' } });
-      fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'johndoe' } });
-      fireEvent.change(screen.getByPlaceholderText('Email Address'), { target: { value: 'john.doe@example.com' } });
-      fireEvent.change(screen.getByPlaceholderText('Enter User Password'), { target: { value: 'password123' } });
+        fireEvent.change(screen.getByPlaceholderText('First Name'), { target: { value: 'John' } });
+        fireEvent.change(screen.getByPlaceholderText('Last Name'), { target: { value: 'Doe' } });
+        fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'johndoe' } });
+        fireEvent.change(screen.getByPlaceholderText('Email Address'), { target: { value: 'john.doe@example.com' } });
+        fireEvent.change(screen.getByPlaceholderText('Enter User Password'), { target: { value: 'password123' } });
 
-      const submitButton = screen.getByRole('button', { name: /Sign Up/i });
+        const submitButton = screen.getByRole('button', { name: /Sign Up/i });
 
       // Click the submit button to trigger the loading state
-      fireEvent.click(submitButton);
+        fireEvent.click(submitButton);
         // Submit the form
         fireEvent.click(screen.getByRole('button', { name: /Sign Up/i }));
 

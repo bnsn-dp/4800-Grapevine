@@ -1,23 +1,27 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import GetSidebar from './functions/display';
 import { describe, test, vi, beforeEach } from 'vitest';
+
+// Use the mockNavigate function to be used by useNavigate in GetSidebar
+const mockNavigate = vi.fn();
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
   return {
     ...actual,
-    useNavigate: () => vi.fn(),
+    useNavigate: () => mockNavigate,
   };
 });
 
 describe('GetSidebar tests', () => {
-  const mockNavigate = vi.fn();
-
   beforeEach(() => {
     vi.clearAllMocks();
-    global.localStorage.setItem('user', JSON.stringify({ first_name: 'John', last_name: 'Doe', username: 'johndoe' }));
+    global.localStorage.setItem(
+      'user',
+      JSON.stringify({ first_name: 'John', last_name: 'Doe', username: 'johndoe' })
+    );
   });
 
   test('A logged in user presses the home button on the sidebar', () => {
