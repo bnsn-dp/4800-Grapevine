@@ -122,25 +122,16 @@ function Communities() {
 
 
   return (
-    <Controller
-        name = {name}
-        control = {control}
-        render ={({
-        field:{onChange, value},
-        fieldState:{error},
-        formState
-        }) =>
-            (
-              <TextField
-                  onChange={onChange}
-                  value={value}
-                  id="standard-basic"
-                  label={label}
-                  variant="standard"
-                  placeholder = {placeholder}
-              />
-            )
-        }
-    />
+    <div className= "Community-Page">
+      <header className="App-Header">
+        <h1 className="App-title">GrapeVine</h1>
+      </header>
+        <div className="Intro-cushion">
+          <button></button>
+          <button></button>
+
+        </div>
+
+    </>
   );
 }
