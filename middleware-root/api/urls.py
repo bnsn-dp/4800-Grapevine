@@ -3,6 +3,8 @@ from .views import *
 from api.Users.user_view import UserViewset
 from api.Users.user_functions import *
 from rest_framework.routers import DefaultRouter
+from api.Engagement.engagement_view import EngagementViewset
+from api.Engagement.engagement_functions import *
 
 router = DefaultRouter()
 router.register('users', UserViewset, basename='users')
@@ -11,7 +13,7 @@ router.register('createdposts', CreatedPostsViewset, basename='createdposts')
 router.register('message', MessageViewset, basename='message')
 router.register('chatroom', ChatRoomViewset, basename='chatroom')
 router.register('friends', FriendsViewset, basename='friends')
-
+router.register('engagement', EngagementViewset, basename='engagement')
 
 urlpatterns = [
     path('api/getuserid/', getUserID, name='getuserid'),
@@ -28,4 +30,8 @@ urlpatterns = [
     path('api/check_friendship_status/', check_friendship_status, name='check_friendship_status'),
     path('api/get_friends_list/', get_friends_list, name='get_friends_list'),
     path('api/remove_friend/', remove_friend, name='remove_friend'),
+    path('api/getengagementid/', getEngagementID, name='getengagementid'),
+    path('api/remove_engagement/', remove_engagement, name='remove_engagement'),
+    path('api/add_engagement/', add_engagement, name='add_engagement'),
+    path('api/get_post_likes/', get_post_likes, name='get_post_likes'),
               ] + router.urls
