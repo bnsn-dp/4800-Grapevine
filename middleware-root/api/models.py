@@ -78,17 +78,16 @@ class Createdposts(models.Model):
         unique_together = (('userid', 'postid', 'ucpid'),)
 
 
-class Engagement(models.Model):
-    engageid = models.CharField(db_column='EngageID', primary_key=True, max_length=16)  # Field name made lowercase. The composite primary key (EngageID, PostID, UserID) found, that is not supported. The first column is selected.
-    postid = models.ForeignKey('Posts', models.DO_NOTHING, db_column='PostID')  # Field name made lowercase.
-    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserID')  # Field name made lowercase.
-    engagementtype = models.CharField(db_column='EngagementType', max_length=8)  # Field name made lowercase.
-    engagedate = models.DateField(db_column='EngageDate')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'Engagement'
-        unique_together = (('engageid', 'postid', 'userid'),)
+# class Engagement(models.Model):
+#     engageid = models.CharField(db_column='EngageID', primary_key=True, max_length=16)  # Field name made lowercase. The composite primary key (EngageID, PostID, UserID) found, that is not supported. The first column is selected.
+#     postid = models.ForeignKey('Posts', models.DO_NOTHING, db_column='PostID')  # Field name made lowercase.
+#     userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserID')  # Field name made lowercase.
+#     engagementtype = models.CharField(db_column='EngagementType', max_length=8)  # Field name made lowercase.
+#
+#     class Meta:
+#         managed = False
+#         db_table = 'Engagement'
+#         unique_together = (('engageid', 'postid', 'userid'),)
 
 
 class Members(models.Model):
