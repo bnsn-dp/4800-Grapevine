@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import {Controller} from 'react-hook-form'
 import AxiosInstance from '../Axios';
@@ -80,7 +81,7 @@ function Communities() {
             user: currentUserID,
             community: searchResult.id,
           });
-          setCommunityStatus(`You have joined ${searchResult.}.`);
+          setCommunityStatus(`You have joined ${searchResult.name}.`);
           fetchCommunities(userid);
           setSearchCommunityname('');
           setSearchResult(null);
@@ -127,11 +128,13 @@ function Communities() {
         <h1 className="App-title">GrapeVine</h1>
       </header>
         <div className="Intro-cushion">
+          console.log('Communities component is rendering');
           <button></button>
           <button></button>
 
         </div>
-
-    </>
+    </div>
   );
 }
+
+export default Communities;
