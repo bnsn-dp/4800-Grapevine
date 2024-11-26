@@ -111,6 +111,7 @@ def get_user_posts(request):
 
                     posts_data.append({
                         'username': created_post.userid.username,  # Get the username of the user
+                        'postid': created_post.postid,
                         'imagelink': post.imagelink,
                         'description': post.postdescription,
                         'datetime': post.posttime,  # Assuming you have a datetime field in Posts
