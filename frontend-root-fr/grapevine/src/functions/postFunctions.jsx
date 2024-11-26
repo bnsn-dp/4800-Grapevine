@@ -7,20 +7,34 @@ import { Link } from 'react-router-dom';
 
 const GetPosts = ({ userID, type }) => {
   const [userPosts, setUserPosts] = useState([]);
+  const [likesCount, setLikesCount] = useState({}); // Stores the number of likes for each post
+  const [userLikes, setUserLikes] = useState({}); // Tracks whether the user has liked each post
   const [showPostBox, setShowPostBox] = useState(false); // State to control dialog visibility
   const [imageLink, setImageLink] = useState(''); // State for image link
   const [description, setDescription] = useState(''); // State for description
 
-  // Fetch posts
+// Fetch posts
   const fetchUserPosts = async (userId) => {
     try {
       const response = await AxiosInstance.post('/api/get_user_posts/', {
         userid: userId,
         type: type,
       });
-      setUserPosts(response.data.posts);
+      const posts = response.data.posts;
+
+      setUserPosts(posts);
+
+      // Fetch likes for each post dynamically
+      const likesMap = {};
+      for (const post of posts) {
+        const likesResponse = await AxiosInstance.post('/api/get_post_likes/', {
+            postid: post.postid,
+        });
+        likesMap[post.postid] = likesResponse.data.likes;
+      }
+      setLikesCount(likesMap);
     } catch (error) {
-      console.error('Error fetching user posts:', error);
+      console.error('Error fetching user posts or likes:', error);
     }
   };
 
@@ -75,14 +89,52 @@ const GetPosts = ({ userID, type }) => {
     }
   };
 
+ const handleLikeToggle = async (postId) => {
+  const isLiked = userLikes[postId]; // Check if the post is currently liked by the user
+  try {
+    const engagementIDResponse = await AxiosInstance.get('/api/getengagementid/');
+    const engagementID = engagementIDResponse.data.genString;
+
+    // Toggle like state
+    if (isLiked) {
+      await AxiosInstance.post('/api/remove_engagement/', {
+        engagementid: engagementID,
+        userid: userID,
+        postid: postId, // Ensure postId is sent in the payload
+      });
+    } else {
+      await AxiosInstance.post('/api/add_engagement/', {
+        engagementid: engagementID,
+        userid: userID,
+        postid: postId, // Ensure postId is sent in the payload
+        liked: "Liked",
+      });
+    }
+
+    // Update likes count from API
+        const likesResponse = await AxiosInstance.post('/api/get_post_likes/', {
+            postid: postId,
+        });
+    setLikesCount((prev) => ({ ...prev, [postId]: likesResponse.data.likes }));
+    setUserLikes((prev) => ({ ...prev, [postId]: !isLiked }));
+  } catch (error) {
+    console.error('Error toggling like:', error);
+  }
+};
+
+
   return (
     <div className="posts-section">
       <div className="posts-header">
-        {type === "all" && <h2 style={{ fontStyle: 'italic' }}>The Trellis</h2>}
-        {type === "all" && (
+        {type === 'all' && <h2 style={{ fontStyle: 'italic' }}>The Trellis</h2>}
+        {type === 'all' && (
           <div className="post-controls">
-            <button className="refresh-button" onClick={refreshPosts}>&#x21bb;</button>
-            <button className="create-post-button" onClick={togglePostBox}>+</button>
+            <button className="refresh-button" onClick={refreshPosts}>
+              &#x21bb;
+            </button>
+            <button className="create-post-button" onClick={togglePostBox}>
+              +
+            </button>
           </div>
         )}
       </div>
@@ -97,9 +149,27 @@ const GetPosts = ({ userID, type }) => {
                   {post.username}
                 </Link>
               </p>
-              <p><strong>Image:</strong> <a href={post.imagelink} target="_blank" rel="noopener noreferrer">{post.imagelink}</a></p>
-              <p><strong>Description:</strong> {post.description}</p>
-              <p><strong>Posted on:</strong> {new Date(post.datetime).toLocaleString()}</p>
+              <p>
+                <strong>Image:</strong>{' '}
+                <a href={post.imagelink} target="_blank" rel="noopener noreferrer">
+                  {post.imagelink}
+                </a>
+              </p>
+              <p>
+                <strong>Description:</strong> {post.description}
+              </p>
+              <p>
+                <strong>Posted on:</strong> {new Date(post.datetime).toLocaleString()}
+              </p>
+              <div className="like-section">
+                <button
+                  className={`like-button ${userLikes[post.postid] ? 'liked' : ''}`}
+                  onClick={() => handleLikeToggle(post.postid)}
+                >
+                  👍
+                </button>
+                <span>{likesCount[post.postid] || 0} likes</span>
+              </div>
             </div>
           ))
         ) : (
@@ -128,8 +198,12 @@ const GetPosts = ({ userID, type }) => {
               rows={4}
               required
             ></textarea>
-            <button type="submit" className="confirm-button">Confirm</button>
-            <button type="button" onClick={togglePostBox} className="cancel-button">Cancel</button>
+            <button type="submit" className="confirm-button">
+              Confirm
+            </button>
+            <button type="button" onClick={togglePostBox} className="cancel-button">
+              Cancel
+            </button>
           </form>
         </div>
       )}
