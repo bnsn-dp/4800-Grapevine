@@ -714,7 +714,7 @@ html, body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the form fields */
+  align-items: center; 
   padding:30px;
 }
 
