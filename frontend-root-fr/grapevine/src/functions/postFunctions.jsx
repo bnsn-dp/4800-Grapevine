@@ -54,7 +54,7 @@ const GetPosts = ({ userID, type }) => {
   // Handle form submission
   const handleCreatePost = async (e) => {
     e.preventDefault();
-    if (description.trim() !== '') {
+    if (description.trim() !== '' && imageLink.trim() !== '') {
       try {
         // Get Post ID
         const postIDResponse = await AxiosInstance.get('api/getpostid/');
@@ -64,9 +64,8 @@ const GetPosts = ({ userID, type }) => {
         await AxiosInstance.post('posts/', {
           postid: postID,
           postdescription: description,
-          imagelink: imageLink.trim() !== '' ? imageLink : null,
+          imagelink: imageLink,
         });
-        
 
         // Get CreatedPost ID
         const createdPostIDResponse = await AxiosInstance.get('api/getcreatedpostid/');
@@ -151,10 +150,14 @@ const GetPosts = ({ userID, type }) => {
                 </Link>
               </p>
               <p>
-                <strong>Image:</strong>{' '}
-                <a href={post.imagelink} target="_blank" rel="noopener noreferrer">
-                  {post.imagelink}
-                </a>
+                <strong>Image:</strong>
+                {post.imagelink && (
+                  <img
+                    src={post.imagelink}
+                    alt="Post Image"
+                    style={{ maxWidth: '100%', height: 'auto', marginTop: '10px' }}
+                  />
+                )}
               </p>
               <p>
                 <strong>Description:</strong> {post.description}
@@ -177,6 +180,7 @@ const GetPosts = ({ userID, type }) => {
           <p>No posts to display.</p>
         )}
       </div>
+
 
       {/* Post Creation Modal */}
       {showPostBox && (
