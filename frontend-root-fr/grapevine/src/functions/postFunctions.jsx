@@ -54,7 +54,7 @@ const GetPosts = ({ userID, type }) => {
   // Handle form submission
   const handleCreatePost = async (e) => {
     e.preventDefault();
-    if (description.trim() !== '' && imageLink.trim() !== '') {
+    if (description.trim() !== '') {
       try {
         // Get Post ID
         const postIDResponse = await AxiosInstance.get('api/getpostid/');
@@ -64,8 +64,9 @@ const GetPosts = ({ userID, type }) => {
         await AxiosInstance.post('posts/', {
           postid: postID,
           postdescription: description,
-          imagelink: imageLink,
+          imagelink: imageLink.trim() !== '' ? imageLink : null,
         });
+        
 
         // Get CreatedPost ID
         const createdPostIDResponse = await AxiosInstance.get('api/getcreatedpostid/');
