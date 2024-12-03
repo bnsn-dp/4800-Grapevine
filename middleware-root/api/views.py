@@ -68,12 +68,12 @@ def getFriends(request):
 # Add a friend to the user's friend list
 @api_view(['POST'])
 def add_friend(request):
-    fid = request.data.get('fid')
     user_id = request.data.get('user')
     friendee_id = request.data.get('friendee')
+    fid = request.data.get('fid')  # Get the provided fid from the request
 
-    if not user_id or not friendee_id:
-        return Response({'error': 'User and Friendee IDs are required'}, status=status.HTTP_400_BAD_REQUEST)
+    if not user_id or not friendee_id or not fid:
+        return Response({'error': 'User, Friendee, and FID are required'}, status=status.HTTP_400_BAD_REQUEST)
 
     try:
         friendee = Users.objects.get(id=friendee_id)
@@ -82,14 +82,36 @@ def add_friend(request):
         if Friends.objects.filter(friender=user_id, friendee=friendee).exists():
             return Response({'message': 'Already friends'}, status=status.HTTP_200_OK)
 
+        # Check if the given fid already exists
+        with connection.cursor() as cursor:
+            cursor.execute('SELECT 1 FROM Friends WHERE fid = %s', [fid])
+            fid_exists = cursor.fetchone() is not None
+
+        # If the fid exists, find the next available fid
+        if fid_exists:
+            with connection.cursor() as cursor:
+                cursor.execute('SELECT fid FROM Friends ORDER BY fid')
+                existing_fids = [row[0] for row in cursor.fetchall()]
+
+            def get_next_fid():
+                prefix = "F"
+                max_length = 16
+                for i in range(1, len(existing_fids) + 2):
+                    new_fid = f"{prefix}{str(i).zfill(max_length - len(prefix))}"
+                    if new_fid not in existing_fids:
+                        return new_fid
+
+            fid = get_next_fid()  # Update fid with the next available value
+
         # Add the friend
         friend = Friends.objects.create(fid=fid, friender=user_id, friendee=friendee.id)
         friend.save()
         return Response({'message': 'Friend added successfully'}, status=status.HTTP_201_CREATED)
 
-    except User.DoesNotExist:
+    except Users.DoesNotExist:
         return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
-
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Check if the user is already a friend
 @api_view(['GET'])

@@ -71,3 +71,28 @@ def get_post_likes(request):
             return JsonResponse({"status": "success", "likes": like_count})
         except Exception as e:
             return JsonResponse({"status": "error", "message": str(e)}, status=500)
+
+@csrf_exempt
+def get_engagement(request):
+    data = json.loads(request.body)
+    user_id = data.get('userid')
+    post_id = data.get('postid')
+
+    if not user_id or not post_id:
+        return JsonResponse({'error': 'User ID and Post ID are required'}, status=400)
+
+    try:
+        engagement = Engagement.objects.filter(userid=user_id, postid=post_id).first()
+        if engagement:
+            return JsonResponse({
+                'engagement': {
+                    'engagementid': engagement.engageid,
+                    'userid': engagement.userid,
+                    'postid': engagement.postid,
+                    'engagementtype': engagement.engagementtype,
+                }
+            }, status=200)
+        else:
+            return JsonResponse({'engagement': None}, status=200)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)

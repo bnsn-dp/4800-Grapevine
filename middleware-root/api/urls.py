@@ -34,4 +34,6 @@ urlpatterns = [
     path('api/remove_engagement/', remove_engagement, name='remove_engagement'),
     path('api/add_engagement/', add_engagement, name='add_engagement'),
     path('api/get_post_likes/', get_post_likes, name='get_post_likes'),
+    path('api/get_engagement/', get_engagement, name='get_engagement'),
+
               ] + router.urls
