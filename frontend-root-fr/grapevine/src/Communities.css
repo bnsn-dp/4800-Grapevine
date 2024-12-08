@@ -1,0 +1,281 @@
+/* Apply to headings */
+.Communities-body h2,
+.Comm-sidebar h2 {
+  font-family: 'VinesDay', sans-serif; /* Fallback to sans-serif */
+  font-size: 45px; /* Adjust font size for readability */
+  font-weight: bold; /* Ensure bold text */
+  color: black; /* Dark green color for consistency */
+  margin-bottom: 20px; /* Add spacing below heading */
+}
+
+/* Apply to headings */
+.Comm-sidebar h2 {
+  font-family: 'VinesDay', sans-serif; /* Fallback to sans-serif */
+  font-size: 32px; /* Adjust font size for readability */
+  font-weight: bold; /* Ensure bold text */
+  color: black; /* Dark green color for consistency */
+  margin-bottom: 20px; /* Add spacing below heading */
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.modal-window {
+  background: #fff;
+  border-radius: 8px;
+  padding: 35px;
+  width: 500px; /* Increased width for more content space */
+  max-width: 90%; /* Ensure responsiveness */
+  max-height: 80%; /* Prevent vertical overflow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #f4f4f4;
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+}
+
+.tabs button.active {
+  background: #007bff;
+  color: white;
+}
+
+.search-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-tab input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Shared button styling */
+.confirm-button,
+.search-tab button {
+  padding: 10px 15px;
+  background: #DCF8C6;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.confirm-button:hover,
+.search-tab button:hover {
+  background: #c0e5aa;
+}
+
+.confirm-button:active,
+.search-tab button:active {
+  transform: scale(0.95);
+}
+
+.cancel-button {
+  padding: 10px 15px;
+  background: #D8BFD8;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.cancel-button:hover {
+  background: #c3a3c3;
+}
+
+.cancel-button:active {
+  transform: scale(0.95);
+}
+
+/* Styling the search results */
+.search-tab ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-tab li {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-tab li:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-tab .cancel-button {
+  padding: 10px 15px;
+  background: #D8BFD8;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.search-tab .cancel-button:hover {
+  background: #c3a3c3;
+  }
+
+.search-tab .cancel-button:active {
+  transform: scale(0.95);
+}
+
+.community-link {
+  background-color: #2E7D32; /* Darker green for improved contrast */
+  color: white;
+  padding: 10px 20px;
+  margin: 5px 0;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transitions for hover effects */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.community-link:hover {
+  background-color: #255D27; /* Even darker green for hover effect */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.community-link:focus {
+  outline: 2px solid #333333; /* Accessible focus outline */
+  outline-offset: 2px;
+}
+
+.add-community-button {
+  background-color: #0056a3; /* Darker blue for better contrast */
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-community-button:hover {
+  background-color: #003d80; /* Even darker blue for hover effect */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.add-community-button:focus {
+  outline: 2px solid #333333;
+  outline-offset: 2px;
+}
+
+.error-message {
+  color: #ff0000; /* Bright red for error messages */
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.members-container {
+  max-height: 300px; /* Set the height for the scrollable area */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ccc; /* Optional: Add a border */
+  padding: 10px; /* Add padding for spacing */
+  margin-top: 10px; /* Add some margin above the container */
+  background-color: #f9f9f9; /* Optional: Light background color */
+  border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.members-container ul {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+}
+
+.members-container li {
+  padding: 5px 0; /* Add spacing between items */
+}
+
+.members-container li a {
+  text-decoration: none; /* Remove underline from links */
+  color: #007bff; /* Blue link color */
+}
+
+.members-container li a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+.community-button {
+  background-color: #4caf50; /* Green for join */
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 10px 0;
+}
+
+.community-button.leave {
+  background-color: #f44336; /* Red for leave */
+}
+
+.community-button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+}
+
+.community-button.leave:hover {
+  background-color: #d32f2f; /* Slightly darker red on hover */
+}
+
+.community-button:active {
+  transform: scale(0.95); /* Button shrink effect on click */
+}
+
+.membership-controls {
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  margin-bottom: 20px;
+}
+
+.membership-controls .community-button {
+  margin-right: 15px; /* Add spacing between buttons if needed */
+}
