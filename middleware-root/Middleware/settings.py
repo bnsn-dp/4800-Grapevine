@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fv#w1yhxwsqpzxasdaaq#ut*%*gqo)&$b!6db-)lu_7wi8x&#q^bnl'
+SECRET_KEY = os.getenv('SK')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,11 +91,11 @@ WSGI_APPLICATION = 'Middleware.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'GVDB',
-        'USER': 'admin',
-        'PASSWORD': 'Halogen2151!',
-        'HOST': 'gvdb.c3igg840g57c.us-west-1.rds.amazonaws.com',
-        'PORT': '3306',
+        'NAME': os.getenv('DBNAME'),
+        'USER': os.getenv('DBUSER'),
+        'PASSWORD': os.getenv('DBPASS'),
+        'HOST': os.getenv('DBHOST'),
+        'PORT': os.getenv('DBPORT'),
     }
 }
 
