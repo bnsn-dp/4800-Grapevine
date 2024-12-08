@@ -437,6 +437,10 @@ html, body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  font-family: 'VinesDay', sans-serif; /* Ensure the same font is applied */
+  font-size: 32px; /* Adjust font size */
+  color: black; /* Dark green for contrast */
+  margin-bottom: 20px; /* Add some spacing */
 }
 
 .Friends-list {
@@ -744,4 +748,11 @@ input[type="text"], input[type="password"] {
 .error-message {
   color: red;
   font-size: 14px;
+}
+
+.Messages-list-title {
+  font-family: 'VinesDay', sans-serif; /* Ensure the same font is applied */
+  font-size: 45px; /* Adjust font size */
+  color: black; /* Dark green for contrast */
+  margin-bottom: 20px; /* Add some spacing */
 }
