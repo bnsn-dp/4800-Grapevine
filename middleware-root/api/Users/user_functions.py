@@ -135,3 +135,15 @@ def get_user_posts(request):
             log_message = f"Error: {str(e)}"
             logs.append(log_message)
             return JsonResponse({'error': str(e), 'logs': logs}, status=400)
+
+@csrf_exempt
+def get_user(request, user_id):
+    try:
+        user = Users.objects.get(id=user_id)
+        return JsonResponse({
+            "id": user.id,
+            "first_name": user.firstname,
+            "last_name": user.lastname
+        })
+    except Users.DoesNotExist:
+        return JsonResponse({"error": "User not found"}, status=404)
