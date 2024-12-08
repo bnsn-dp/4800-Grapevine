@@ -140,3 +140,11 @@
   align-items: center;
   gap: 10px; /* Add space between the button and the like count */
 }
+
+/* Add styling for The Trellis heading */
+.trellis-heading {
+  font-family: 'VinesDay', sans-serif; /* Ensure the same font is applied */
+  font-size: 45px; /* Adjust font size */
+  color: black; /* Dark green for contrast */
+  margin-bottom: 20px; /* Add some spacing */
+}
