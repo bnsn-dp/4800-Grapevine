@@ -15,7 +15,7 @@ function App() {
     <Router>
         <Routes>
           <Route path="/" element={<IntroPage />} />
-          <Route path="/communities" element={<Communities />} />
+          <Route path="/communities/:communitykey" element={<Communities />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/home" element={<Home />} />
 {/*           <Route path="/profile" element={<Profile />} /> */}
