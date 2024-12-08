@@ -43,28 +43,28 @@ class Comments(models.Model):
         managed = False
         db_table = 'Comments'
 
-class Communities(models.Model):
-    communityid = models.CharField(db_column='CommunityID', primary_key=True, max_length=16)  # Field name made lowercase.
-    communityname = models.CharField(db_column='CommunityName', max_length=40)  # Field name made lowercase.
-    communitydescription = models.CharField(db_column='CommunityDescription', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    creationdate = models.DateField(db_column='CreationDate')  # Field name made lowercase.
-    ownerid = models.ForeignKey('Users', models.DO_NOTHING, db_column='OwnerID')  # Field name made lowercase.
+# class Communities(models.Model):
+#     communityid = models.CharField(db_column='CommunityID', primary_key=True, max_length=16)  # Field name made lowercase.
+#     communityname = models.CharField(db_column='CommunityName', max_length=40)  # Field name made lowercase.
+#     communitydescription = models.CharField(db_column='CommunityDescription', max_length=250, blank=True, null=True)  # Field name made lowercase.
+#     creationdate = models.DateField(db_column='CreationDate')  # Field name made lowercase.
+#     ownerid = models.ForeignKey('Users', models.DO_NOTHING, db_column='OwnerID')  # Field name made lowercase.
+#
+#     class Meta:
+#         managed = False
+#         db_table = 'Communities'
 
-    class Meta:
-        managed = False
-        db_table = 'Communities'
 
-
-class Communitypost(models.Model):
-    userid = models.OneToOneField('Users', models.DO_NOTHING, db_column='UserID')  # Field name made lowercase. The composite primary key (UserID, CommunityID, PostID, CPID) found, that is not supported. The first column is selected.
-    communityid = models.ForeignKey('Communities', models.DO_NOTHING, db_column='CommunityID', to_field='communityid', related_name='communitypost_communityid_set')  # Field name made lowercase.
-    postid = models.ForeignKey('Posts', models.DO_NOTHING, db_column='PostID')  # Field name made lowercase.
-    cpid = models.CharField(db_column='CPID', max_length=16, primary_key=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'CommunityPost'
-        unique_together = (('userid', 'communityid', 'postid', 'cpid'),)
+# class Communitypost(models.Model):
+#     userid = models.OneToOneField('Users', models.DO_NOTHING, db_column='UserID')  # Field name made lowercase. The composite primary key (UserID, CommunityID, PostID, CPID) found, that is not supported. The first column is selected.
+#     communityid = models.ForeignKey('Communities', models.DO_NOTHING, db_column='CommunityID', to_field='communityid', related_name='communitypost_communityid_set')  # Field name made lowercase.
+#     postid = models.ForeignKey('Posts', models.DO_NOTHING, db_column='PostID')  # Field name made lowercase.
+#     cpid = models.CharField(db_column='CPID', max_length=16, primary_key=True)  # Field name made lowercase.
+#
+#     class Meta:
+#         managed = False
+#         db_table = 'CommunityPost'
+#         unique_together = (('userid', 'communityid', 'postid', 'cpid'),)
 
 
 class Createdposts(models.Model):
@@ -90,22 +90,22 @@ class Createdposts(models.Model):
 #         unique_together = (('engageid', 'postid', 'userid'),)
 
 
-class Members(models.Model):
-    userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserID')  # Field name made lowercase. The composite primary key (UserID, CommunityID, MemberID) found, that is not supported. The first column is selected.
-    communityid = models.ForeignKey('Communities', models.DO_NOTHING, db_column='CommunityID')  # Field name made lowercase.
-    joindate = models.DateField(db_column='JoinDate')  # Field name made lowercase.
-    memberid = models.CharField(db_column='MemberID', max_length=16, primary_key=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'Members'
-        unique_together = (('userid', 'communityid', 'memberid'),)
+# class Members(models.Model):
+#     userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='UserID')  # Field name made lowercase. The composite primary key (UserID, CommunityID, MemberID) found, that is not supported. The first column is selected.
+#     communityid = models.ForeignKey('Communities', models.DO_NOTHING, db_column='CommunityID')  # Field name made lowercase.
+#     joindate = models.DateField(db_column='JoinDate')  # Field name made lowercase.
+#     memberid = models.CharField(db_column='MemberID', max_length=16, primary_key=True)  # Field name made lowercase.
+#
+#     class Meta:
+#         managed = False
+#         db_table = 'Members'
+#         unique_together = (('userid', 'communityid', 'memberid'),)
 
 
 class Posts(models.Model):
     postid = models.CharField(db_column='PostID', primary_key=True, max_length=16)  # Field name made lowercase.
     postdescription = models.CharField(db_column='PostDescription', max_length=250, blank=True, null=True)  # Field name made lowercase.
-    imagelink = models.CharField(db_column='ImageLink', max_length=250)  # Field name made lowercase.
+    imagelink = models.CharField(db_column='ImageLink', max_length=250, blank=True, null=True)  # Field name made lowercase.
     posttime = models.DateTimeField(db_column='PostTime', auto_now_add=True)  # Field name made lowercase.
 
     class Meta:
