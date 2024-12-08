@@ -31,6 +31,16 @@ const LoginPage = () => {
           last_name,
           username
         }));
+//         const responseToken = AxiosInstance.post('api/token/', {
+//             username: data.username,
+//             userpassword: data.password,
+//           });
+//
+//         localStorage.setItem('access_token', responseToken.data.access);
+//         localStorage.setItem('refresh_token', responseToken.data.refresh);
+
+        // Redirect or do something on successful login
+        console.log('Logged in successfully');
         navigate("/home");  // Redirect to home on successful login
       }
     })
