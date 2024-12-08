@@ -1,8 +1,6 @@
-// src/functions/postFunctions.jsx
-
 import React, { useEffect, useState } from 'react';
 import AxiosInstance from '../Axios';
-import '../Posts.css'
+import '../Posts.css';
 import { Link } from 'react-router-dom';
 
 const GetPosts = ({ userID, type }) => {
@@ -13,30 +11,44 @@ const GetPosts = ({ userID, type }) => {
   const [imageLink, setImageLink] = useState(''); // State for image link
   const [description, setDescription] = useState(''); // State for description
 
-// Fetch posts
-  const fetchUserPosts = async (userId) => {
-    try {
-      const response = await AxiosInstance.post('/api/get_user_posts/', {
-        userid: userId,
-        type: type,
+  // Fetch posts
+const fetchUserPosts = async (userId) => {
+  try {
+    const response = await AxiosInstance.post('/api/get_user_posts/', {
+      userid: userId,
+      type: type,
+    });
+    const posts = response.data.posts;
+
+    setUserPosts(posts);
+
+    // Fetch likes and user engagement for each post
+    const likesMap = {};
+    const userLikesMap = {};
+
+    for (const post of posts) {
+      // Fetch likes count
+      const likesResponse = await AxiosInstance.post('/api/get_post_likes/', {
+        postid: post.postid,
       });
-      const posts = response.data.posts;
+      likesMap[post.postid] = likesResponse.data.likes;
 
-      setUserPosts(posts);
+      // Fetch user engagement for the post
+      const engagementResponse = await AxiosInstance.post('/api/get_engagement/', {
+        userid: userID,
+        postid: post.postid,
+      });
 
-      // Fetch likes for each post dynamically
-      const likesMap = {};
-      for (const post of posts) {
-        const likesResponse = await AxiosInstance.post('/api/get_post_likes/', {
-            postid: post.postid,
-        });
-        likesMap[post.postid] = likesResponse.data.likes;
-      }
-      setLikesCount(likesMap);
-    } catch (error) {
-      console.error('Error fetching user posts or likes:', error);
+      const engagement = engagementResponse.data.engagement;
+      userLikesMap[post.postid] = engagement ? engagement.engagementtype === 'Liked' : false;
     }
-  };
+
+    setLikesCount(likesMap);
+    setUserLikes(userLikesMap);
+  } catch (error) {
+    console.error('Error fetching user posts or likes:', error);
+  }
+};
 
   useEffect(() => {
     if (userID) fetchUserPosts(userID);
@@ -89,44 +101,39 @@ const GetPosts = ({ userID, type }) => {
     }
   };
 
- const handleLikeToggle = async (postId) => {
-  const isLiked = userLikes[postId]; // Check if the post is currently liked by the user
-  try {
-    const engagementIDResponse = await AxiosInstance.get('/api/getengagementid/');
-    const engagementID = engagementIDResponse.data.genString;
-
-    // Toggle like state
-    if (isLiked) {
-      await AxiosInstance.post('/api/remove_engagement/', {
-        engagementid: engagementID,
-        userid: userID,
-        postid: postId, // Ensure postId is sent in the payload
-      });
-    } else {
-      await AxiosInstance.post('/api/add_engagement/', {
-        engagementid: engagementID,
-        userid: userID,
-        postid: postId, // Ensure postId is sent in the payload
-        liked: "Liked",
-      });
-    }
-
-    // Update likes count from API
-        const likesResponse = await AxiosInstance.post('/api/get_post_likes/', {
-            postid: postId,
+  const handleLikeToggle = async (postId) => {
+    const isLiked = userLikes[postId]; // Check if the post is currently liked by the user
+    try {
+      if (isLiked) {
+        // Remove like
+        await AxiosInstance.post('/api/remove_engagement/', {
+          userid: userID,
+          postid: postId,
         });
-    setLikesCount((prev) => ({ ...prev, [postId]: likesResponse.data.likes }));
-    setUserLikes((prev) => ({ ...prev, [postId]: !isLiked }));
-  } catch (error) {
-    console.error('Error toggling like:', error);
-  }
-};
+        setLikesCount((prev) => ({ ...prev, [postId]: prev[postId] - 1 }));
+      } else {
+        // Add like
+        const engagementIDResponse = await AxiosInstance.get('/api/getengagementid/');
+        const engagementID = engagementIDResponse.data.genString;
 
+        await AxiosInstance.post('/api/add_engagement/', {
+          engagementid: engagementID,
+          userid: userID,
+          postid: postId,
+        });
+        setLikesCount((prev) => ({ ...prev, [postId]: (prev[postId] || 0) + 1 }));
+      }
+
+      setUserLikes((prev) => ({ ...prev, [postId]: !isLiked })); // Toggle the liked state
+    } catch (error) {
+      console.error('Error toggling like:', error);
+    }
+  };
 
   return (
     <div className="posts-section">
       <div className="posts-header">
-        {type === 'all' && <h2 style={{ fontStyle: 'italic' }}>The Trellis</h2>}
+        {type === 'all' && <h2 className="trellis-heading">The Trellis</h2>}
         {type === 'all' && (
           <div className="post-controls">
             <button className="refresh-button" onClick={refreshPosts}>
@@ -180,7 +187,6 @@ const GetPosts = ({ userID, type }) => {
           <p>No posts to display.</p>
         )}
       </div>
-
 
       {/* Post Creation Modal */}
       {showPostBox && (
