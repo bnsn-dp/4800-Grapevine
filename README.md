@@ -1,1 +1,2 @@
-https://docs.google.com/document/d/1XLF-1hUs6BSML5iDpdpdiqHy0mEphSTotvDJYA-WoPM/edit
+Note:
+middleware virtual environment uses virtualenv, not python venv

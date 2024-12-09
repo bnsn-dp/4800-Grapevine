@@ -1,0 +1,758 @@
+/* Ensure the body and html take the full viewport height */
+html, body {
+  height: 100vh; /* 100% of the viewport height */
+  margin: 0; /* Remove default margins */
+  display: flex; /* Enable flexbox for alignment */
+  flex-direction: column;
+  background-color: #ffffff; /* Set a consistent background color */
+  gap: 5rem; /* Adds spacing between sidebar and content */
+
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: beige;
+  font-family: Arial, sans-serif;
+}
+
+.App-header {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8f8f8;
+}
+
+.App-title {
+  margin: 0;
+  font-size: 5rem;
+  font-family: 'VinesDay', Arial, sans-serif;
+  color: #105624;
+}
+
+.App-content {
+  display: flex;
+  flex: 1;
+  background-color: #f8f8f8;
+
+}
+
+.App-sidebar {
+  flex: 0 0 15%;
+  max-width: 300px; /* Optional max width to limit its size on larger screens */
+  height: 100vh;
+  background-color: #e0e0e0;
+  padding: 0rem 0rem 0rem 1.5rem;
+  border-radius: 20px;
+  margin: 1rem 1rem 1rem 1rem;
+  box-sizing: border-box; /* Ensure padding is included within the width */
+
+}
+
+.Sidebar-title {
+  font-size: 2rem;
+  font-family: 'VinesDay', Arial, sans-serif;
+  margin-left: 38px;
+}
+
+.App-sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  font-weight: bold;
+}
+
+.App-sidebar nav ul li {
+  margin: 3rem 0;
+}
+
+.App-sidebar nav ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #030303;
+}
+
+.App-main {
+  flex: 1;
+  padding: 1rem;
+  background-color:#f8f8f8;
+  margin-right: 0;
+}
+
+.nav-icons {
+  width: 30px;
+  height: auto;
+  margin-right: 20px;
+  color: #f8f8f8;
+}
+
+.search-container{
+  padding-right: 1rem;
+}
+
+.search-input{
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.user-info{
+  margin-top: 11rem;
+  margin-right: 1.5rem;
+  padding: 1rem;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;;
+  color:inherit;
+  display: block;
+}
+
+.profile-pic{
+  border-radius: 50%;
+  margin-bottom:0rem;
+}
+.user-name{
+  font-size:1.3rem;
+  font-weight:bold;
+  color: #105624;
+  margin-bottom:0.2rem;
+}
+
+.username{
+  margin-top:0.5rem;
+  color:black;
+  text-decoration:none !important;
+  cursor: pointer;
+}
+
+.create-post-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #026806;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;        
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+
+.post-container {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.post-textbox {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.confirm-button {
+  width: 100%;
+  padding: 5px;
+  background-color: #025415;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.App-posts {
+  padding: 10px;
+}
+
+.post {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+}
+
+
+.Intro-content{
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  height: 100vh ;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.Intro-cushion{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.Intro-buttons{
+  padding: 10px 20px;
+  margin: 0 10px; 
+  background-color: #105624;
+  color: #FAF9F6; 
+  border: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Profile-buttons{
+  background-color: #105624;
+  color: #FAF9F6;
+  height: 3rem;
+  width: 10rem;
+}
+
+.ProfilePage-pic{
+  height:8rem;
+  width: auto;
+  border-radius: 50%;
+  padding: 10px;                        
+}
+
+
+.ProfilePage-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+
+}
+
+.ProfilePage-text h1, .ProfilePage-text h2 {
+  margin: 0;
+  padding: 3%;
+}
+
+.Profile-buttons {
+  display: block;
+  margin-top: 20px;
+  border-radius:5px;
+
+}
+
+.Profile-content{
+  display: block;
+  margin-bottom:10px;
+}
+
+.Bio-buttons{
+  background-color: #105624;
+  color: #FAF9F6;
+  height: 2rem;
+  width: 5rem;
+  border-radius:5px;
+  border:0px;
+}
+
+.Profile-bio{
+  margin-left: 150px;
+}
+
+.Bio-content{
+  background-color: #e0e0e0;
+  padding:12px;
+  border-radius:10px;
+}
+
+.Bio-buttons {
+  margin-top: 10px;
+}
+
+.Messages-list {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 725px;
+  overflow-y: auto;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+
+}
+
+.Messages-list-title {
+  padding-left: 5px;
+}
+.Messages-list ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.Messages-list li {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.Messages-list-container {
+  display: flex;
+  flex-direction: column;
+  width: 350px; 
+  margin-left: 20px;
+  list-style: none;
+}
+
+.message-item {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-item:hover {
+  background-color: #e0e0e0;
+}
+
+@font-face {
+  font-family: 'VinesDay'; 
+  src: url('/public/fonts/FleurDeLeah.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+.posts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.refresh-button {
+  background-color: #DAB1DA;
+  color: black;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.refresh-button:hover {
+  background-color: #0056b3;
+}
+
+.Chat-section {
+  margin-left: 20px;
+  padding: 20px;
+}
+
+.Chat-chat {
+  display: flex;
+  flex-direction: column;
+  height: 650px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.chat-bubble {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.sender-message {
+  background-color: #f1f1f1;
+  align-self: flex-start;
+}
+
+.user-message {
+  background-color: #f1f1f1;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.Chat-input {
+  display: flex;
+}
+
+
+.Chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.Chat-input button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #026806;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Create-chat-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.Chats-header {
+  display: flex;
+  align-items: center;
+}
+
+.create-chat-button {
+  margin-left: 10px;
+  padding: 5px 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Styling for the profile friends list section */
+.Profile-friends {
+  margin-top: 20px;
+}
+
+.Friends-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-family: 'VinesDay', sans-serif; /* Ensure the same font is applied */
+  font-size: 32px; /* Adjust font size */
+  color: black; /* Dark green for contrast */
+  margin-bottom: 20px; /* Add some spacing */
+}
+
+.Friends-list {
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Styling for each friend in the friends list */
+.Friends-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Friends-list li {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.Friends-list li:last-child {
+  border-bottom: none;
+}
+
+/* Add Friends and Remove Friends buttons */
+.Add-friend-button,
+.Remove-friend-button {
+  background-color: #DCF8C6; /* Light green background for Add Friends button */
+  border: none;
+  color: #333; /* Darker text color for contrast */
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+/* Hover effect for Add Friends button */
+.Add-friend-button:hover {
+  background-color: #c0e5aa; /* Slightly darker green for hover */
+}
+
+/* Remove Friends button styling */
+.Remove-friend-button {
+  background-color: #D8BFD8; /* Light purple background for Remove Friends button */
+}
+
+/* Hover effect for Remove Friends button */
+.Remove-friend-button:hover {
+  background-color: #c3a3c3; /* Slightly darker purple for hover */
+}
+
+/* Dialog box styling */
+.FriendDialog {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.FriendDialog input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.FriendDialog button {
+  background-color: #DCF8C6;
+  color: #333;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.FriendDialog button:hover {
+  background-color: #c0e5aa;
+}
+
+.FriendDialog p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Close button for dialogs */
+.FriendDialog .close-button {
+  background-color: #D8BFD8;
+  margin-top: 10px;
+  padding: 10px 15px;
+}
+
+.FriendDialog .close-button:hover {
+  background-color: #c3a3c3;
+}
+
+.welcome-message p {
+  font-size: 24px;  /* Larger font size */
+  font-weight: bold;  /* Bold text */
+  margin: 20px 0;
+}
+
+.welcome-message p {
+  font-size: 24px;  /* Larger font size */
+  font-weight: bold;  /* Bold text */
+  font-style: italic;  /* Italic text */
+  margin: 20px 0;
+}
+
+/* Search container styling */
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Posts section should take up remaining height and be scrollable */
+.App-posts {
+  width: 75%; /* Match the width of the search bar */
+  max-height: calc(100vh * .6); /* Dynamic height: full viewport height minus the height of other elements */
+  overflow-y: auto; /* Scrollable container */
+  border: 1px solid #ccc; /* Optional: Add a border */
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #f9f9f9; /* Optional: Add a background */
+    /* Hide the scrollbar for Webkit browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.App-posts::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar for Chrome, Safari, and Edge */
+}
+
+/* Ensure the posts section's width matches that of the search input */
+.App-posts, .search-input {
+  width: 75%; /* Posts section should be 75% width to match the search input */
+}
+
+/* Post styling */
+.post {
+  padding: 10px;
+  border-bottom: 1px solid #eee; /* Optional: Add a separator between posts */
+  margin-bottom: 10px;
+}
+
+.confirm-button {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.refresh-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* Adds space between posts and friends sections */
+  margin-top: 1rem;
+}
+
+.posts-section {
+  flex: 3;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  overflow: auto; /* Enables scroll if content exceeds height */
+}
+
+.friends-section {
+  flex: 1;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+}
+
+.Communities-body {
+    width: 75%; /* Match the width of the search bar */
+    max-height: calc(100vh * .6); /* Dynamic height: full viewport height minus the height of other elements */
+    overflow-y: auto; /* Scrollable container */
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #f9f9f9; /* Optional: Add a background */
+      /* Hide the scrollbar for Webkit browsers */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.Comm-sidebar {
+  flex: 0 0 15%;
+  max-width: 300px; /* Optional max width to limit its size on larger screens */
+  height: 100vh;
+  background-color: #e0e0e0;
+  padding: 0rem 0rem 0rem 1.5rem;
+  border-radius: 20px;
+  margin: 1rem 1rem 1rem 1rem;
+  box-sizing: border-box; /* Ensure padding is included within the width */
+}
+
+
+.add-community-button {
+  background-color: #026806;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.add-community-button:hover {
+  background-color: #026806;
+}
+
+.community-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.community-list li {
+  margin: 10px 0;
+}
+
+.Login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  height: 100vh; 
+  background-color: #f8f8f8;
+}
+
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  width: 100%;
+  max-width: 400px; 
+  padding: 20px;
+  background-color: #fff; 
+  border-radius: 35px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  margin-top:5px;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding:30px;
+}
+
+.Login-buttons {
+  background-color: #026806;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.Login-buttons:hover {
+  background-color: #026806;
+}
+
+input[type="text"], input[type="password"] {
+  width: 100%; 
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+.Messages-list-title {
+  font-family: 'VinesDay', sans-serif; /* Ensure the same font is applied */
+  font-size: 45px; /* Adjust font size */
+  color: black; /* Dark green for contrast */
+  margin-bottom: 20px; /* Add some spacing */
+}
