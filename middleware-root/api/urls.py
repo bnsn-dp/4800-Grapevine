@@ -11,6 +11,12 @@ from api.Members.members_view import *
 from api.Members.members_functions import *
 from api.CommunityPost.communitypost_view import CommunityPostViewset
 from api.CommunityPost.communitypost_functions import addCommunityPost
+from api.CreatedPosts.createdposts_functions import *
+from api.Friends.friends_functions import *
+from api.Messages.messages_functions import *
+from api.Posts.posts_functions import *
+from api.Chatroom.chatroom_functions import *
+
 router = DefaultRouter()
 router.register('users', UserViewset, basename='users')
 router.register('posts', PostViewset, basename='posts')
